@@ -3,39 +3,38 @@ import logging
 from google.cloud import storage
 from dotenv import load_dotenv
 
-# Set up logging
+# Enable logging
 logging.basicConfig(level=logging.INFO)
 
-# Load environment variables from .env file
+# Load environment variables
 load_dotenv()
 
-# GCS configuration
-bucket_name = os.getenv('BUCKET_NAME')  # This will get the bucket name from your .env file
-local_file_path = os.getenv('LOCAL_FILE_PATH')  # Local file to upload
-destination_blob_name = os.getenv('DESTINATION_BLOB_NAME')  # The name in GCS
+# Check if the credentials file exists
+credentials_path = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
+if not os.path.exists(credentials_path):
+    logging.error(f"Credentials file not found: {credentials_path}")
+    exit(1)
 
-# Log the loaded environment variables for debugging
-logging.info(f"Bucket Name: {bucket_name}")
-logging.info(f"Local File Path: {local_file_path}")
-logging.info(f"Destination Blob Name: {destination_blob_name}")
+# Check if the dataset file exists
+local_file_path = os.getenv("LOCAL_FILE_PATH")
+if not os.path.exists(local_file_path):
+    logging.error(f"Local file not found: {local_file_path}")
+    exit(1)
+
+# Retrieve other environment variables
+bucket_name = os.getenv("BUCKET_NAME")
+destination_blob_name = os.getenv("DESTINATION_BLOB_NAME")
+
+# Google Cloud Storage Upload
+client = storage.Client()
+bucket = client.bucket(bucket_name)
+blob = bucket.blob(destination_blob_name)
+
+logging.info(f"Uploading {local_file_path} to {bucket_name}/{destination_blob_name}...")
 
 try:
-    # Initialize GCS client
-    storage_client = storage.Client()
-    logging.info("GCS client initialized successfully.")
-
-    # Get the GCS bucket
-    bucket = storage_client.get_bucket(bucket_name)
-    logging.info(f"Bucket {bucket_name} retrieved successfully.")
-
-    # Create a blob object (represents the file in GCS)
-    blob = bucket.blob(destination_blob_name)
-    logging.info(f"Blob object created for {destination_blob_name}.")
-
-    # Upload the file to GCS
-    logging.info(f"Starting upload of {local_file_path} to GCS...")
     blob.upload_from_filename(local_file_path)
-    logging.info(f"File {local_file_path} uploaded to {bucket_name}/{destination_blob_name}.")
-
+    logging.info("Upload successful!")
 except Exception as e:
-    logging.error(f"An error occurred during the upload process: {e}")
+    logging.error(f"Upload failed: {e}")
+    exit(1)
