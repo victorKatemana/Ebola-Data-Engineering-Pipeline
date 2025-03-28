@@ -1,0 +1,22 @@
+FROM bitnami/spark:latest
+
+WORKDIR /app
+
+# Install required Python packages
+RUN pip install --upgrade pip && \
+    pip install google-cloud-bigquery
+
+# Copy scripts and credentials
+COPY load_to_bigquery.py .
+COPY secrets/ebola-data-pipeline-secret.json /app/ebola-data-pipeline-secret.json
+
+#  Copy BOTH required JARs
+COPY gcs-connector-hadoop3-2.2.5-shaded.jar /opt/bitnami/spark/jars/
+COPY spark-bigquery-with-dependencies_2.12-0.29.0.jar /opt/bitnami/spark/jars/
+
+
+# Set environment variables
+ENV GOOGLE_APPLICATION_CREDENTIALS="/app/ebola-data-pipeline-secret.json"
+
+# Run the script using spark-submit
+CMD ["spark-submit", "load_to_bigquery.py"]

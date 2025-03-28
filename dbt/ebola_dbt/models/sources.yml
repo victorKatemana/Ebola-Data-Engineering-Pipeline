@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: ebola
+    database: terraform-demo-448410
+    schema: ebola_dataset_2014
+    tables:
+      - name: ebola_cases

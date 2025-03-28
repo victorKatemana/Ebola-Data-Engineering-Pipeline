@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: cases_by_country
+    description: "Pivoted Ebola case counts by country and date"
+    columns:
+      - name: country
+        tests:
+          - not_null
+      - name: date
+        tests:
+          - not_null
+      - name: confirmed_cases
+        tests:
+          - not_null
+      - name: probable_cases
+        tests:
+          - not_null
+      - name: suspected_cases
+        tests:
+          - not_null
+
+          
+  - name: cases_summary_by_date
+    description: "Summarized total cases per date"
+    columns:
+      - name: date
+        tests:
+          - not_null
