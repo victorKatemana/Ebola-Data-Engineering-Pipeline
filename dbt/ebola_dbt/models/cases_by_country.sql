@@ -1,11 +1,16 @@
 {{ config(
-    materialized='table'
+    materialized='table',
+    partition_by={
+        "field": "date",
+        "data_type": "date"
+    },
+    clustering=["country"]
 ) }}
 
 WITH base AS (
     SELECT
         country,
-        date,
+        CAST(date AS DATE) AS date,
         indicator,
         CAST(CAST(value AS FLOAT64) AS INT64) AS value
     FROM {{ source('ebola', 'ebola_cases') }}
