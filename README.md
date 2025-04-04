@@ -1,82 +1,150 @@
-# Ebola-Data-Engineering-Pipeline
-End-to-end data engineering project based on my learnings from the Data Engineering Zoomcamp 2025. This project processes Ebola outbreak data using batch and streaming pipelines, storing it in a cloud-based data warehouse, transforming it for analysis, and visualizing insights via a BI dashboard
-## Requirements
+# Ebola Data Engineering Pipeline
 
-Before you start, ensure that you have the following:
+This project demonstrates an end-to-end data engineering pipeline using public Ebola data. It includes data ingestion, storage, transformation, and analytics using tools like Terraform, GCP (BigQuery & GCS), Docker, dbt, and Kestra for orchestration.
 
-- **Docker** installed on your machine.
-- **Google Cloud Platform (GCP)** project credentials (Service account JSON key).
-- **Python 3.x** environment set up (in the Docker container).
-- **.env** file to configure necessary environment variables.
+## 🚀 Project Structure Overview
 
----
-
-## Project Structure
-
-The project is structured as follows:
-/Ebola-Data-Engineering-Pipeline ├── Dockerfile ├── upload_to_gcs.py ├── .env ├── dataset/ │ └── ebola_data_db_format.csv ├── secrets/ │ └── ebola-data-pipeline-secret.json
-
-
-- **Dockerfile**: Defines the Docker image for the pipeline, including required dependencies.
-- **upload_to_gcs.py**: The script that uploads the dataset from the local file system to Google Cloud Storage.
-- **.env**: Contains configuration variables for the project, such as local file paths, bucket names, and GCP credentials.
-- **dataset/**: Folder containing the dataset CSV file to be uploaded.
-- **secrets/**: Folder containing the GCP credentials (Service account JSON key).
+- **Terraform:** Provisions GCP infrastructure (GCS bucket, BigQuery dataset/table).
+- **Kestra:** Orchestrates the full pipeline from downloading raw data to dbt model execution.
+- **Docker:** Alternative manual execution of components (Spark processing, upload to GCS, dbt transformation).
+- **dbt:** Transforms and models data within BigQuery.
+- **Public Data:** Raw Ebola dataset hosted on GitHub.
 
 ---
 
-## Setup Instructions
+## 🔧 Requirements
 
-### 1. Clone the Repository
+- Docker & Docker Compose
+- Python 3.x
+- Terraform installed
+- GCP Project with service account JSON credentials
 
-Clone the project repository to your local machine:
+---
+
+## 📁 Directory Structure
 
 ```bash
-git clone https://github.com/your-repository-link
+Ebola-Data-Engineering-Pipeline/
+├── dbt/                          # dbt project (models, snapshots, etc.)
+│   └── ebola_dbt/               
+├── docker/                       # Dockerfiles for spark, upload to GCS, etc.
+│   ├── Dockerfile.spark
+│   ├── Dockerfile.upload_gcs
+├── kestra.yaml                   # Kestra flow definition
+├── secrets/                      # GCP credentials file (sa.json)
+├── terraform/                    # Terraform infrastructure code
+│   ├── main.tf
+│   ├── variables.tf              # <-- Update this with your GCP settings
+│   └── outputs.tf
+├── dataset/                      # Raw Ebola data (e.g., CSV)
+├── README.md
+```
+```
+
+---
+
+## ⚙️ Setup & Configuration
+
+### 1. Clone the Repo
+```bash
+git clone https://github.com/victorKatemana/Ebola-Data-Engineering-Pipeline.git
 cd Ebola-Data-Engineering-Pipeline
+```
 
-2. Configure the .env File
-The .env file contains important environment variables for the project. It defines paths for local files and the GCS bucket information.
+### 2. Set GCP
+Navigate to the `terraform/` folder
+```Edit the variables.tf file and:
+- Set values for `project_id`, `region`, `bucket_name`, etc.
+```
 
-Ensure you have the following variables defined:
+### 3. Apply Terraform
+Ensure you are in the terraform folder to initialize/apply the infrastructure:
+```bash
+cd terraform
+terraform init
+terraform apply
+```
+This creates:
+- A GCS bucket for raw data
+- A BigQuery dataset and external table
 
-# Google Cloud project details
-PROJECT_ID=your-google-cloud-project-id
-BUCKET_NAME=your-gcs-bucket-name
-DATASET_NAME=ebola_dataset_2014
+---
 
-# Path to the local file (to be copied into container)
-LOCAL_FILE_PATH=/path/to/your/local/ebola_data_db_format.csv
+## ✅ Run the Project with Kestra Orchestration (Recommended)
 
-# Path where the secret key will be inside the container
-GOOGLE_APPLICATION_CREDENTIALS=/path/to/your/gcp-credentials.json
+Kestra automates the pipeline from raw dataset to transformed dbt models.
+We use a custom **local-built Kestra Docker image** that includes Python, dbt, and BigQuery support.
+This avoids the need for a separate container for dbt CLI.
 
-# Destination blob name in GCS
-DESTINATION_BLOB_NAME=ebola_data_db_format.csv
+### 1. Launch Kestra
+```bash
+cd kestra
+docker build -t kestra-with-dbt -f Dockerfile.kestra . #locally built custom Kestra image that comes preconfigured with a Python virtual environment and all necessary dbt packages for BigQuery
+docker compose up -d
+```
 
-Important:
+### 2. Access Kestra UI
+Visit: [http://localhost:8080](http://localhost:8080)
 
-Replace your-google-cloud-project-id, your-gcs-bucket-name, and your-gcp-credentials.json with the actual values.
+### 3. Configure KVStore under the ebola namespace
+Add the following in Kestra's KVStore UI:
+- `GCP_CREDS`: Paste full JSON credentials of GCP service account
+- `GCP_PROJECT_ID`: Your GCP project ID
+- `BUCKET_NAME`: Name of your GCS bucket
+- `BQ_DATASET`: BigQuery dataset name (e.g., `ebola_dataset_2014`)
+- `BQ_TABLE`: BigQuery table name (e.g., `ebola_data`)
 
-Ensure LOCAL_FILE_PATH points to the correct location of your CSV file.
+### 4. Import the Flow
+In the UI:
+1. Click `+` to create a new flow.
+2. Paste contents from `ebola_pipeline` YAML (already provided in `canvas`).
+3. Click **Save**.
 
-3. Dockerfile Configuration
-The Dockerfile defines the Docker image and the required dependencies to run the pipeline. It installs necessary Python libraries, sets environment variables for authentication, and specifies the command to run the upload script.
+### 5. Run the Flow
+Click `Execute` in the top right corner of the flow. The following will happen:
+- Dataset is downloaded from GitHub
+- Uploaded to GCS
+- BigQuery external & partitioned tables created
+- dbt models executed on BigQuery
 
-# Copy the local dataset file into the container
-COPY dataset/ebola_data_db_format.csv /app/dataset/ebola_data_db_format.csv
+Logs and artifacts are shown live in the Kestra UI.
 
-# Copy the GCP credentials to the container
-COPY secrets/ebola-data-pipeline-secret.json /app/ebola-data-pipeline-secret.json
+---
 
-4. Build the Docker Image
-Once your .env file is configured, and the Dockerfile is set up, you can build the Docker image.
+## 🐳 Alternative: Run with Docker Only
 
-In the project directory, run the following command to build the image:
- 
- docker build -t ebola-data-pipeline .
+You can run each component manually without Kestra:
 
-5. Run the Pipeline
-To run the pipeline and upload the dataset to Google Cloud Storage, use the following command:
+### 1. Process with Spark
+```bash
+docker build -f Dockerfile.spark -t spark-ebola .
+docker run spark-ebola
+```
 
-docker run --rm --env-file .env ebola-data-pipeline
+### 2. Upload to GCS
+```bash
+docker build -f Dockerfile.upload_gcs -t upload-ebola .
+docker run -e GCP_CREDS="$(cat path/to/sa.json)" upload-ebola
+```
+
+### 3. Run dbt
+```bash
+cd dbt/ebola_dbt
+export GOOGLE_APPLICATION_CREDENTIALS="path/to/sa.json"
+dbt deps
+dbt run
+```
+
+---
+
+## 🧠 Notes
+- The dataset comes from WHO’s 2014 Ebola outbreak data.
+- dbt models include logic to clean, aggregate and split cases and deaths.
+- Kestra visualizes model lineage and duration in Gantt view.
+
+---
+
+## 📫 Contact
+Victor Katemana — [GitHub](https://github.com/victorKatemana) | [LinkedIn](https://www.linkedin.com/in/victorkatemana)
+
+---

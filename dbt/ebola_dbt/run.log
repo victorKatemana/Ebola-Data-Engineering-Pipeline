@@ -1,0 +1,625 @@
+[0m12:09:49  Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb35256d7b0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb352420880>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb3516d01f0>]}
+[0m12:09:49  Running with dbt=1.9.4
+[0m12:09:49  running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'debug': 'True', 'profiles_dir': '.', 'log_path': '/app/dbt/ebola_dbt/logs', 'fail_fast': 'False', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'invocation_command': 'dbt run --profiles-dir . --full-refresh --debug', 'introspect': 'True', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
+[0m12:09:50  Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'd57d09c2-0fbe-41b1-8b2c-b0c3fc200779', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb32d9d2830>]}
+[0m12:09:51  Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'd57d09c2-0fbe-41b1-8b2c-b0c3fc200779', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb32db495a0>]}
+[0m12:09:51  Registered adapter: bigquery=1.9.1
+[0m12:09:51  checksum: b5597158181700c50f5bc1c71fe28b37a6fb85633dc5323885263678b6bc782c, vars: {}, profile: , target: , version: 1.9.4
+[0m12:09:52  Partial parsing enabled: 0 files deleted, 0 files added, 1 files changed.
+[0m12:09:52  Partial parsing: updated file: ebola_dbt://models/cases_and_deaths_by_country.sql
+[0m12:09:52  Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'd57d09c2-0fbe-41b1-8b2c-b0c3fc200779', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb32c4ae5f0>]}
+[0m12:09:52  Wrote artifact WritableManifest to /app/dbt/ebola_dbt/target/manifest.json
+[0m12:09:52  Wrote artifact SemanticManifest to /app/dbt/ebola_dbt/target/semantic_manifest.json
+[0m12:09:52  Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'd57d09c2-0fbe-41b1-8b2c-b0c3fc200779', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb32c4943d0>]}
+[0m12:09:52  Found 13 models, 6 data tests, 1 source, 491 macros
+[0m12:09:52  Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'd57d09c2-0fbe-41b1-8b2c-b0c3fc200779', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb32da46b60>]}
+[0m12:09:52  
+[0m12:09:52  Concurrency: 4 threads (target='dev')
+[0m12:09:52  
+[0m12:09:52  Acquiring new bigquery connection 'master'
+[0m12:09:52  Acquiring new bigquery connection 'list_terraform-demo-448410'
+[0m12:09:52  Opening a new connection, currently in state init
+[0m12:09:54  Re-using an available connection from the pool (formerly list_terraform-demo-448410, now list_terraform-demo-448410_ebola_dataset_2014)
+[0m12:09:54  Opening a new connection, currently in state closed
+[0m12:09:56  Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'd57d09c2-0fbe-41b1-8b2c-b0c3fc200779', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb32d9d2380>]}
+[0m12:09:56  Opening a new connection, currently in state init
+[0m12:09:56  Began running node model.ebola_dbt.case_fatality_rates
+[0m12:09:56  Began running node model.ebola_dbt.cases_and_deaths_by_country
+[0m12:09:56  Began running node model.ebola_dbt.cases_by_country
+[0m12:09:56  Began running node model.ebola_dbt.cases_by_status
+[0m12:09:56  1 of 11 START sql view model ebola_dataset_2014.case_fatality_rates ............ [RUN]
+[0m12:09:56  2 of 11 START sql view model ebola_dataset_2014.cases_and_deaths_by_country .... [RUN]
+[0m12:09:56  3 of 11 START sql table model ebola_dataset_2014.cases_by_country .............. [RUN]
+[0m12:09:56  4 of 11 START sql view model ebola_dataset_2014.cases_by_status ................ [RUN]
+[0m12:09:56  Re-using an available connection from the pool (formerly list_terraform-demo-448410_ebola_dataset_2014, now model.ebola_dbt.case_fatality_rates)
+[0m12:09:56  Acquiring new bigquery connection 'model.ebola_dbt.cases_and_deaths_by_country'
+[0m12:09:56  Acquiring new bigquery connection 'model.ebola_dbt.cases_by_country'
+[0m12:09:56  Acquiring new bigquery connection 'model.ebola_dbt.cases_by_status'
+[0m12:09:56  Began compiling node model.ebola_dbt.case_fatality_rates
+[0m12:09:56  Began compiling node model.ebola_dbt.cases_and_deaths_by_country
+[0m12:09:56  Began compiling node model.ebola_dbt.cases_by_country
+[0m12:09:56  Began compiling node model.ebola_dbt.cases_by_status
+[0m12:09:56  Writing injected SQL for node "model.ebola_dbt.case_fatality_rates"
+[0m12:09:56  Writing injected SQL for node "model.ebola_dbt.cases_and_deaths_by_country"
+[0m12:09:56  Writing injected SQL for node "model.ebola_dbt.cases_by_country"
+[0m12:09:56  Writing injected SQL for node "model.ebola_dbt.cases_by_status"
+[0m12:09:56  Began executing node model.ebola_dbt.case_fatality_rates
+[0m12:09:56  Began executing node model.ebola_dbt.cases_by_country
+[0m12:09:56  Began executing node model.ebola_dbt.cases_and_deaths_by_country
+[0m12:09:56  Began executing node model.ebola_dbt.cases_by_status
+[0m12:09:56  Writing runtime sql for node "model.ebola_dbt.case_fatality_rates"
+[0m12:09:56  Opening a new connection, currently in state init
+[0m12:09:56  Writing runtime sql for node "model.ebola_dbt.cases_and_deaths_by_country"
+[0m12:09:56  Writing runtime sql for node "model.ebola_dbt.cases_by_status"
+[0m12:09:56  On model.ebola_dbt.case_fatality_rates: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "ebola_dbt", "target_name": "dev", "node_id": "model.ebola_dbt.case_fatality_rates"} */
+
+
+  create or replace view `terraform-demo-448410`.`ebola_dataset_2014`.`case_fatality_rates`
+  OPTIONS(
+      description=""""""
+    )
+  as -- models/case_fatality_rates.sql
+SELECT
+    country,
+    date,
+    indicator,
+    SAFE_CAST(value AS FLOAT64) AS cfr
+FROM `terraform-demo-448410`.`ebola_dataset_2014`.`ebola_cases`
+WHERE indicator LIKE 'Case fatality rate (CFR)%';
+
+-- models/death_summary_by_period.sql
+WITH base AS (
+    SELECT
+        country,
+        date,
+        indicator,
+        SAFE_CAST(value AS INT64) AS value
+    FROM `terraform-demo-448410`.`ebola_dataset_2014`.`ebola_cases`
+    WHERE indicator IN (
+        'Number of confirmed Ebola deaths in the last 21 days',
+        'Number of probable Ebola deaths in the last 21 days',
+        'Number of suspected Ebola deaths in the last 21 days',
+        'Number of confirmed, probable and suspected Ebola deaths in the last 21 days'
+    )
+),
+
+pivoted AS (
+    SELECT
+        country,
+        date,
+        SUM(CASE WHEN indicator = 'Number of confirmed Ebola deaths in the last 21 days' THEN value ELSE 0 END) AS confirmed_deaths,
+        SUM(CASE WHEN indicator = 'Number of probable Ebola deaths in the last 21 days' THEN value ELSE 0 END) AS probable_deaths,
+        SUM(CASE WHEN indicator = 'Number of suspected Ebola deaths in the last 21 days' THEN value ELSE 0 END) AS suspected_deaths,
+        SUM(CASE WHEN indicator = 'Number of confirmed, probable and suspected Ebola deaths in the last 21 days' THEN value ELSE 0 END) AS total_recent_deaths
+    FROM base
+    GROUP BY country, date
+)
+
+SELECT * FROM pivoted;
+
+
+[0m12:09:56  On model.ebola_dbt.cases_and_deaths_by_country: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "ebola_dbt", "target_name": "dev", "node_id": "model.ebola_dbt.cases_and_deaths_by_country"} */
+
+
+  create or replace view `terraform-demo-448410`.`ebola_dataset_2014`.`cases_and_deaths_by_country`
+  OPTIONS(
+      description=""""""
+    )
+  as WITH cases AS (
+    SELECT
+        country,
+        date,
+        SUM(CAST(REGEXP_REPLACE(CAST(value AS STRING), r'\.0$', '') AS INT64)) AS total_case_value,
+        SUM(CASE 
+                WHEN indicator = 'Cumulative number of confirmed Ebola cases' 
+                THEN CAST(REGEXP_REPLACE(CAST(value AS STRING), r'\.0$', '') AS INT64)
+                ELSE 0
+            END) AS confirmed_cases,
+        SUM(CASE 
+                WHEN indicator = 'Cumulative number of probable Ebola cases' 
+                THEN CAST(REGEXP_REPLACE(CAST(value AS STRING), r'\.0$', '') AS INT64)
+                ELSE 0
+            END) AS probable_cases,
+        SUM(CASE 
+                WHEN indicator = 'Cumulative number of suspected Ebola cases' 
+                THEN CAST(REGEXP_REPLACE(CAST(value AS STRING), r'\.0$', '') AS INT64)
+                ELSE 0
+            END) AS suspected_cases
+    FROM `terraform-demo-448410`.`ebola_dataset_2014`.`ebola_cases`
+    WHERE indicator IN (
+        'Cumulative number of confirmed Ebola cases',
+        'Cumulative number of probable Ebola cases',
+        'Cumulative number of suspected Ebola cases'
+    )
+    GROUP BY country, date
+),
+
+deaths AS (
+    SELECT
+        country,
+        date,
+        SUM(CASE 
+                WHEN indicator = 'Cumulative number of confirmed Ebola deaths' 
+                THEN CAST(REGEXP_REPLACE(CAST(value AS STRING), r'\.0$', '') AS INT64)
+                ELSE 0
+            END) AS confirmed_deaths,
+        SUM(CASE 
+                WHEN indicator = 'Cumulative number of probable Ebola deaths' 
+                THEN CAST(REGEXP_REPLACE(CAST(value AS STRING), r'\.0$', '') AS INT64)
+                ELSE 0
+            END) AS probable_deaths,
+        SUM(CASE 
+                WHEN indicator = 'Cumulative number of suspected Ebola deaths' 
+                THEN CAST(REGEXP_REPLACE(CAST(value AS STRING), r'\.0$', '') AS INT64)
+                ELSE 0
+            END) AS suspected_deaths
+    FROM `terraform-demo-448410`.`ebola_dataset_2014`.`ebola_cases`
+    WHERE indicator IN (
+        'Cumulative number of confirmed Ebola deaths',
+        'Cumulative number of probable Ebola deaths',
+        'Cumulative number of suspected Ebola deaths'
+    )
+    GROUP BY country, date
+)
+
+SELECT
+    c.country,
+    c.date,
+    confirmed_cases,
+    probable_cases,
+    suspected_cases,
+    confirmed_deaths,
+    probable_deaths,
+    suspected_deaths
+FROM cases c
+LEFT JOIN deaths d
+ON c.country = d.country AND c.date = d.date;
+
+
+[0m12:09:56  Opening a new connection, currently in state closed
+[0m12:09:56  Opening a new connection, currently in state init
+[0m12:09:56  On model.ebola_dbt.cases_by_status: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "ebola_dbt", "target_name": "dev", "node_id": "model.ebola_dbt.cases_by_status"} */
+
+
+  create or replace view `terraform-demo-448410`.`ebola_dataset_2014`.`cases_by_status`
+  OPTIONS(
+      description=""""""
+    )
+  as -- models/cases_by_status.sql
+WITH base AS (
+    SELECT
+        country,
+        date,
+        indicator,
+        SAFE_CAST(value AS INT64) AS value
+    FROM `terraform-demo-448410`.`ebola_dataset_2014`.`ebola_cases`
+    WHERE indicator IN (
+        'Cumulative number of confirmed Ebola cases',
+        'Cumulative number of probable Ebola cases',
+        'Cumulative number of suspected Ebola cases'
+    )
+),
+
+pivoted AS (
+    SELECT
+        country,
+        date,
+        SUM(CASE WHEN indicator = 'Cumulative number of confirmed Ebola cases' THEN value ELSE 0 END) AS confirmed,
+        SUM(CASE WHEN indicator = 'Cumulative number of probable Ebola cases' THEN value ELSE 0 END) AS probable,
+        SUM(CASE WHEN indicator = 'Cumulative number of suspected Ebola cases' THEN value ELSE 0 END) AS suspected
+    FROM base
+    GROUP BY country, date
+)
+
+SELECT * FROM pivoted;
+
+
+[0m12:09:57  Opening a new connection, currently in state init
+[0m12:09:58  Writing runtime sql for node "model.ebola_dbt.cases_by_country"
+[0m12:09:58  On model.ebola_dbt.cases_by_country: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "ebola_dbt", "target_name": "dev", "node_id": "model.ebola_dbt.cases_by_country"} */
+
+  
+    
+
+    create or replace table `terraform-demo-448410`.`ebola_dataset_2014`.`cases_by_country`
+      
+    partition by date
+    
+
+    OPTIONS(
+      description="""Pivoted Ebola case counts by country and date"""
+    )
+    as (
+      
+
+WITH base AS (
+    SELECT
+        country,
+        CAST(date AS DATE) AS date,
+        indicator,
+        CAST(CAST(value AS FLOAT64) AS INT64) AS value
+    FROM `terraform-demo-448410`.`ebola_dataset_2014`.`ebola_cases`
+    WHERE indicator IN (
+        'Cumulative number of confirmed Ebola cases',
+        'Cumulative number of probable Ebola cases',
+        'Cumulative number of suspected Ebola cases'
+    )
+),
+pivoted AS (
+    SELECT
+        country,
+        date,
+        SUM(CASE WHEN indicator = 'Cumulative number of confirmed Ebola cases' THEN value ELSE 0 END) AS confirmed_cases,
+        SUM(CASE WHEN indicator = 'Cumulative number of probable Ebola cases' THEN value ELSE 0 END) AS probable_cases,
+        SUM(CASE WHEN indicator = 'Cumulative number of suspected Ebola cases' THEN value ELSE 0 END) AS suspected_cases
+    FROM base
+    GROUP BY country, date
+)
+
+SELECT * FROM pivoted
+    );
+  
+[0m12:09:58  BigQuery adapter: https://console.cloud.google.com/bigquery?project=terraform-demo-448410&j=bq:US:fe56cf8d-3ef7-4c8a-92d5-306d60617354&page=queryresults
+[0m12:09:59  BigQuery adapter: https://console.cloud.google.com/bigquery?project=terraform-demo-448410&j=bq:US:74da4cbf-35aa-41ff-9f65-9beaa29ff7ea&page=queryresults
+[0m12:09:59  BigQuery adapter: https://console.cloud.google.com/bigquery?project=terraform-demo-448410&j=bq:US:7d15584f-80d0-4901-a63a-3054ae07efbe&page=queryresults
+[0m12:09:59  BigQuery adapter: https://console.cloud.google.com/bigquery?project=terraform-demo-448410&j=bq:US:2ba7ca32-9f60-491b-b70e-d1d08e9bb2df&page=queryresults
+[0m12:09:59  Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'd57d09c2-0fbe-41b1-8b2c-b0c3fc200779', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb32c4cece0>]}
+[0m12:09:59  2 of 11 OK created sql view model ebola_dataset_2014.cases_and_deaths_by_country  [[32mCREATE VIEW (0 processed)[0m in 3.21s]
+[0m12:09:59  Finished running node model.ebola_dbt.cases_and_deaths_by_country
+[0m12:09:59  Began running node model.ebola_dbt.combined_case_death_summary
+[0m12:09:59  5 of 11 START sql view model ebola_dataset_2014.combined_case_death_summary .... [RUN]
+[0m12:09:59  Re-using an available connection from the pool (formerly model.ebola_dbt.cases_and_deaths_by_country, now model.ebola_dbt.combined_case_death_summary)
+[0m12:09:59  Began compiling node model.ebola_dbt.combined_case_death_summary
+[0m12:09:59  Writing injected SQL for node "model.ebola_dbt.combined_case_death_summary"
+[0m12:09:59  Began executing node model.ebola_dbt.combined_case_death_summary
+[0m12:09:59  Writing runtime sql for node "model.ebola_dbt.combined_case_death_summary"
+[0m12:09:59  On model.ebola_dbt.combined_case_death_summary: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "ebola_dbt", "target_name": "dev", "node_id": "model.ebola_dbt.combined_case_death_summary"} */
+
+
+  create or replace view `terraform-demo-448410`.`ebola_dataset_2014`.`combined_case_death_summary`
+  OPTIONS(
+      description=""""""
+    )
+  as -- models/combined_case_death_summary.sql
+WITH base AS (
+    SELECT
+        country,
+        date,
+        indicator,
+        SAFE_CAST(value AS INT64) AS value
+    FROM `terraform-demo-448410`.`ebola_dataset_2014`.`ebola_cases`
+    WHERE indicator IN (
+        'Cumulative number of confirmed, probable and suspected Ebola cases',
+        'Cumulative number of confirmed, probable and suspected Ebola deaths'
+    )
+),
+
+pivoted AS (
+    SELECT
+        country,
+        date,
+        SUM(CASE WHEN indicator = 'Cumulative number of confirmed, probable and suspected Ebola cases' THEN value ELSE 0 END) AS total_cases,
+        SUM(CASE WHEN indicator = 'Cumulative number of confirmed, probable and suspected Ebola deaths' THEN value ELSE 0 END) AS total_deaths
+    FROM base
+    GROUP BY country, date
+)
+
+SELECT * FROM pivoted;
+
+
+[0m12:09:59  Opening a new connection, currently in state closed
+[0m12:09:59  Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'd57d09c2-0fbe-41b1-8b2c-b0c3fc200779', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb32c44b8e0>]}
+[0m12:09:59  4 of 11 OK created sql view model ebola_dataset_2014.cases_by_status ........... [[32mCREATE VIEW (0 processed)[0m in 3.32s]
+[0m12:10:00  Finished running node model.ebola_dbt.cases_by_status
+[0m12:10:00  Began running node model.ebola_dbt.deaths_by_country
+[0m12:10:00  6 of 11 START sql view model ebola_dataset_2014.deaths_by_country .............. [RUN]
+[0m12:10:00  Re-using an available connection from the pool (formerly model.ebola_dbt.cases_by_status, now model.ebola_dbt.deaths_by_country)
+[0m12:10:00  Began compiling node model.ebola_dbt.deaths_by_country
+[0m12:10:00  Writing injected SQL for node "model.ebola_dbt.deaths_by_country"
+[0m12:10:00  Began executing node model.ebola_dbt.deaths_by_country
+[0m12:10:00  Writing runtime sql for node "model.ebola_dbt.deaths_by_country"
+[0m12:10:00  On model.ebola_dbt.deaths_by_country: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "ebola_dbt", "target_name": "dev", "node_id": "model.ebola_dbt.deaths_by_country"} */
+
+
+  create or replace view `terraform-demo-448410`.`ebola_dataset_2014`.`deaths_by_country`
+  OPTIONS(
+      description=""""""
+    )
+  as WITH base AS (
+    SELECT
+        country,
+        date,
+        indicator,
+        CAST(value AS INT64) AS value
+    FROM `terraform-demo-448410`.`ebola_dataset_2014`.`ebola_cases`
+    WHERE indicator IN (
+        'Cumulative number of confirmed Ebola deaths',
+        'Cumulative number of probable Ebola deaths',
+        'Cumulative number of suspected Ebola deaths'
+    )
+),
+
+pivoted AS (
+    SELECT
+        country,
+        date,
+        SUM(CASE WHEN indicator = 'Cumulative number of confirmed Ebola deaths' THEN value ELSE 0 END) AS confirmed_deaths,
+        SUM(CASE WHEN indicator = 'Cumulative number of probable Ebola deaths' THEN value ELSE 0 END) AS probable_deaths,
+        SUM(CASE WHEN indicator = 'Cumulative number of suspected Ebola deaths' THEN value ELSE 0 END) AS suspected_deaths
+    FROM base
+    GROUP BY country, date
+)
+
+SELECT * FROM pivoted;
+
+
+[0m12:10:00  Opening a new connection, currently in state closed
+[0m12:10:01  Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'd57d09c2-0fbe-41b1-8b2c-b0c3fc200779', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb32c2542e0>]}
+[0m12:10:01  1 of 11 OK created sql view model ebola_dataset_2014.case_fatality_rates ....... [[32mSCRIPT (367.9 KiB processed)[0m in 4.67s]
+[0m12:10:01  Finished running node model.ebola_dbt.case_fatality_rates
+[0m12:10:01  Began running node model.ebola_dbt.forecast_cases_by_country
+[0m12:10:01  7 of 11 START sql view model ebola_dataset_2014.forecast_cases_by_country ...... [RUN]
+[0m12:10:01  Re-using an available connection from the pool (formerly model.ebola_dbt.case_fatality_rates, now model.ebola_dbt.forecast_cases_by_country)
+[0m12:10:01  Began compiling node model.ebola_dbt.forecast_cases_by_country
+[0m12:10:01  Writing injected SQL for node "model.ebola_dbt.forecast_cases_by_country"
+[0m12:10:01  Began executing node model.ebola_dbt.forecast_cases_by_country
+[0m12:10:01  Writing runtime sql for node "model.ebola_dbt.forecast_cases_by_country"
+[0m12:10:01  On model.ebola_dbt.forecast_cases_by_country: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "ebola_dbt", "target_name": "dev", "node_id": "model.ebola_dbt.forecast_cases_by_country"} */
+
+
+  create or replace view `terraform-demo-448410`.`ebola_dataset_2014`.`forecast_cases_by_country`
+  OPTIONS(
+      description=""""""
+    )
+  as 
+
+WITH base AS (
+    SELECT
+        country,
+        DATE(date) AS date,
+        SUM(CAST(value AS INT64)) AS total_cases
+    FROM `terraform-demo-448410`.`ebola_dataset_2014`.`ebola_cases`
+    WHERE indicator = 'Cumulative number of confirmed Ebola cases'
+    GROUP BY country, date
+),
+
+ranked AS (
+    SELECT *,
+        ROW_NUMBER() OVER (PARTITION BY country ORDER BY date) AS rn
+    FROM base
+),
+
+slope_calc AS (
+    SELECT
+        country,
+        COUNT(*) AS n,
+        SUM(rn) AS sum_x,
+        SUM(total_cases) AS sum_y,
+        SUM(rn * total_cases) AS sum_xy,
+        SUM(rn * rn) AS sum_xx
+    FROM ranked
+    GROUP BY country
+),
+
+slope_and_intercept AS (
+    SELECT
+        country,
+        -- Simple linear regression slope and intercept
+        (n * sum_xy - sum_x * sum_y) / (n * sum_xx - sum_x * sum_x) AS slope,
+        (sum_y - ((n * sum_xy - sum_x * sum_y) / (n * sum_xx - sum_x * sum_x)) * sum_x) / n AS intercept
+    FROM slope_calc
+),
+
+forecasted AS (
+    SELECT
+        r.country,
+        DATE_ADD(MAX(r.date), INTERVAL offset WEEK) AS forecast_date,
+        ROUND(s.intercept + s.slope * (MAX(r.rn) + offset)) AS projected_cases
+    FROM ranked r
+    JOIN slope_and_intercept s
+    ON r.country = s.country
+    CROSS JOIN UNNEST(GENERATE_ARRAY(1, 4)) AS offset  -- Forecast 4 weeks ahead
+    GROUP BY r.country, offset, s.intercept, s.slope
+)
+
+SELECT * FROM forecasted;
+
+
+[0m12:10:01  Opening a new connection, currently in state closed
+[0m12:10:02  BigQuery adapter: https://console.cloud.google.com/bigquery?project=terraform-demo-448410&j=bq:US:d290ccc5-f66c-4cee-8be7-ea7496c7cf88&page=queryresults
+[0m12:10:02  BigQuery adapter: https://console.cloud.google.com/bigquery?project=terraform-demo-448410&j=bq:US:8e855274-56af-4f33-8d8f-10387cb23377&page=queryresults
+[0m12:10:02  Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'd57d09c2-0fbe-41b1-8b2c-b0c3fc200779', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb352657b80>]}
+[0m12:10:02  5 of 11 OK created sql view model ebola_dataset_2014.combined_case_death_summary  [[32mCREATE VIEW (0 processed)[0m in 3.03s]
+[0m12:10:02  Finished running node model.ebola_dbt.combined_case_death_summary
+[0m12:10:02  Began running node model.ebola_dbt.indicators_flat_table
+[0m12:10:02  8 of 11 START sql view model ebola_dataset_2014.indicators_flat_table .......... [RUN]
+[0m12:10:02  Re-using an available connection from the pool (formerly model.ebola_dbt.combined_case_death_summary, now model.ebola_dbt.indicators_flat_table)
+[0m12:10:02  Began compiling node model.ebola_dbt.indicators_flat_table
+[0m12:10:02  Writing injected SQL for node "model.ebola_dbt.indicators_flat_table"
+[0m12:10:02  Began executing node model.ebola_dbt.indicators_flat_table
+[0m12:10:02  Writing runtime sql for node "model.ebola_dbt.indicators_flat_table"
+[0m12:10:02  On model.ebola_dbt.indicators_flat_table: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "ebola_dbt", "target_name": "dev", "node_id": "model.ebola_dbt.indicators_flat_table"} */
+
+
+  create or replace view `terraform-demo-448410`.`ebola_dataset_2014`.`indicators_flat_table`
+  OPTIONS(
+      description=""""""
+    )
+  as -- models/indicator_flat_table.sql
+SELECT
+    country,
+    date,
+    indicator,
+    SAFE_CAST(value AS FLOAT64) AS value
+FROM `terraform-demo-448410`.`ebola_dataset_2014`.`ebola_cases`
+ORDER BY country, date, indicator;
+
+
+[0m12:10:03  Opening a new connection, currently in state closed
+[0m12:10:03  Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'd57d09c2-0fbe-41b1-8b2c-b0c3fc200779', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb32c256920>]}
+[0m12:10:03  6 of 11 OK created sql view model ebola_dataset_2014.deaths_by_country ......... [[32mCREATE VIEW (0 processed)[0m in 3.18s]
+[0m12:10:03  Finished running node model.ebola_dbt.deaths_by_country
+[0m12:10:03  Began running node model.ebola_dbt.recent_cases_summary
+[0m12:10:03  9 of 11 START sql view model ebola_dataset_2014.recent_cases_summary ........... [RUN]
+[0m12:10:03  Re-using an available connection from the pool (formerly model.ebola_dbt.deaths_by_country, now model.ebola_dbt.recent_cases_summary)
+[0m12:10:03  Began compiling node model.ebola_dbt.recent_cases_summary
+[0m12:10:03  Writing injected SQL for node "model.ebola_dbt.recent_cases_summary"
+[0m12:10:03  Began executing node model.ebola_dbt.recent_cases_summary
+[0m12:10:03  Writing runtime sql for node "model.ebola_dbt.recent_cases_summary"
+[0m12:10:03  On model.ebola_dbt.recent_cases_summary: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "ebola_dbt", "target_name": "dev", "node_id": "model.ebola_dbt.recent_cases_summary"} */
+
+
+  create or replace view `terraform-demo-448410`.`ebola_dataset_2014`.`recent_cases_summary`
+  OPTIONS(
+      description=""""""
+    )
+  as -- models/recent_cases_summary.sql
+WITH filtered AS (
+    SELECT
+        country,
+        date,
+        indicator,
+        SAFE_CAST(value AS INT64) AS value
+    FROM `terraform-demo-448410`.`ebola_dataset_2014`.`ebola_cases`
+    WHERE indicator IN (
+        'Number of confirmed Ebola cases in the last 7 days',
+        'Number of confirmed Ebola cases in the last 21 days',
+        'Proportion of confirmed Ebola cases that are from the last 7 days',
+        'Proportion of confirmed Ebola cases that are from the last 21 days'
+    )
+),
+
+pivoted AS (
+    SELECT
+        country,
+        date,
+        SUM(CASE WHEN indicator = 'Number of confirmed Ebola cases in the last 7 days' THEN value ELSE 0 END) AS confirmed_7d,
+        SUM(CASE WHEN indicator = 'Number of confirmed Ebola cases in the last 21 days' THEN value ELSE 0 END) AS confirmed_21d,
+        SUM(CASE WHEN indicator = 'Proportion of confirmed Ebola cases that are from the last 7 days' THEN value ELSE 0 END) AS prop_7d,
+        SUM(CASE WHEN indicator = 'Proportion of confirmed Ebola cases that are from the last 21 days' THEN value ELSE 0 END) AS prop_21d
+    FROM filtered
+    GROUP BY country, date
+)
+
+SELECT * FROM pivoted;
+
+
+[0m12:10:03  Opening a new connection, currently in state closed
+[0m12:10:03  BigQuery adapter: https://console.cloud.google.com/bigquery?project=terraform-demo-448410&j=bq:US:f5f23dc8-935e-436b-8f30-7a510d5d450d&page=queryresults
+[0m12:10:04  Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'd57d09c2-0fbe-41b1-8b2c-b0c3fc200779', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb32da22170>]}
+[0m12:10:04  7 of 11 OK created sql view model ebola_dataset_2014.forecast_cases_by_country . [[32mCREATE VIEW (0 processed)[0m in 2.87s]
+[0m12:10:04  Finished running node model.ebola_dbt.forecast_cases_by_country
+[0m12:10:04  Began running node model.ebola_dbt.weekly_trends_by_country
+[0m12:10:04  10 of 11 START sql view model ebola_dataset_2014.weekly_trends_by_country ...... [RUN]
+[0m12:10:04  Re-using an available connection from the pool (formerly model.ebola_dbt.forecast_cases_by_country, now model.ebola_dbt.weekly_trends_by_country)
+[0m12:10:04  Began compiling node model.ebola_dbt.weekly_trends_by_country
+[0m12:10:04  Writing injected SQL for node "model.ebola_dbt.weekly_trends_by_country"
+[0m12:10:04  Began executing node model.ebola_dbt.weekly_trends_by_country
+[0m12:10:04  Writing runtime sql for node "model.ebola_dbt.weekly_trends_by_country"
+[0m12:10:04  On model.ebola_dbt.weekly_trends_by_country: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "ebola_dbt", "target_name": "dev", "node_id": "model.ebola_dbt.weekly_trends_by_country"} */
+
+
+  create or replace view `terraform-demo-448410`.`ebola_dataset_2014`.`weekly_trends_by_country`
+  OPTIONS(
+      description=""""""
+    )
+  as WITH base AS (
+    SELECT
+        country,
+        date,
+        indicator,
+        CAST(value AS INT64) AS value
+    FROM `terraform-demo-448410`.`ebola_dataset_2014`.`ebola_cases`
+    WHERE indicator IN (
+        'Number of confirmed Ebola cases in the last 7 days',
+        'Number of probable Ebola cases in the last 7 days',
+        'Number of suspected Ebola cases in the last 7 days',
+        'Number of confirmed Ebola cases in the last 21 days',
+        'Number of probable Ebola cases in the last 21 days',
+        'Number of suspected Ebola cases in the last 21 days'
+    )
+),
+
+pivoted AS (
+    SELECT
+        country,
+        date,
+        SUM(CASE WHEN indicator = 'Number of confirmed Ebola cases in the last 7 days' THEN value ELSE 0 END) AS last_7d_confirmed,
+        SUM(CASE WHEN indicator = 'Number of probable Ebola cases in the last 7 days' THEN value ELSE 0 END) AS last_7d_probable,
+        SUM(CASE WHEN indicator = 'Number of suspected Ebola cases in the last 7 days' THEN value ELSE 0 END) AS last_7d_suspected,
+        SUM(CASE WHEN indicator = 'Number of confirmed Ebola cases in the last 21 days' THEN value ELSE 0 END) AS last_21d_confirmed,
+        SUM(CASE WHEN indicator = 'Number of probable Ebola cases in the last 21 days' THEN value ELSE 0 END) AS last_21d_probable,
+        SUM(CASE WHEN indicator = 'Number of suspected Ebola cases in the last 21 days' THEN value ELSE 0 END) AS last_21d_suspected
+    FROM base
+    GROUP BY country, date
+)
+
+SELECT * FROM pivoted;
+
+
+[0m12:10:04  Opening a new connection, currently in state closed
+[0m12:10:04  BigQuery adapter: https://console.cloud.google.com/bigquery?project=terraform-demo-448410&j=bq:US:9576741b-18ab-4379-ad34-9e7d20a4abea&page=queryresults
+[0m12:10:05  BigQuery adapter: https://console.cloud.google.com/bigquery?project=terraform-demo-448410&j=bq:US:52c93146-8086-416b-8946-2300dbefa929&page=queryresults
+[0m12:10:05  Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'd57d09c2-0fbe-41b1-8b2c-b0c3fc200779', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb32da45240>]}
+[0m12:10:05  8 of 11 OK created sql view model ebola_dataset_2014.indicators_flat_table ..... [[32mCREATE VIEW (0 processed)[0m in 2.80s]
+[0m12:10:05  Finished running node model.ebola_dbt.indicators_flat_table
+[0m12:10:06  Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'd57d09c2-0fbe-41b1-8b2c-b0c3fc200779', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb3244e09d0>]}
+[0m12:10:06  9 of 11 OK created sql view model ebola_dataset_2014.recent_cases_summary ...... [[32mCREATE VIEW (0 processed)[0m in 2.79s]
+[0m12:10:06  Finished running node model.ebola_dbt.recent_cases_summary
+[0m12:10:06  BigQuery adapter: https://console.cloud.google.com/bigquery?project=terraform-demo-448410&j=bq:US:d132b455-8e95-40e1-821b-23409c4a915c&page=queryresults
+[0m12:10:07  Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'd57d09c2-0fbe-41b1-8b2c-b0c3fc200779', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb32c51d150>]}
+[0m12:10:07  10 of 11 OK created sql view model ebola_dataset_2014.weekly_trends_by_country . [[32mCREATE VIEW (0 processed)[0m in 2.80s]
+[0m12:10:07  Finished running node model.ebola_dbt.weekly_trends_by_country
+[0m12:10:07  Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'd57d09c2-0fbe-41b1-8b2c-b0c3fc200779', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb32d99b490>]}
+[0m12:10:07  3 of 11 OK created sql table model ebola_dataset_2014.cases_by_country ......... [[32mCREATE TABLE (2.5k rows, 1.3 MiB processed)[0m in 11.22s]
+[0m12:10:07  Finished running node model.ebola_dbt.cases_by_country
+[0m12:10:07  Began running node model.ebola_dbt.cases_summary_by_date
+[0m12:10:07  11 of 11 START sql view model ebola_dataset_2014.cases_summary_by_date ......... [RUN]
+[0m12:10:07  Re-using an available connection from the pool (formerly model.ebola_dbt.indicators_flat_table, now model.ebola_dbt.cases_summary_by_date)
+[0m12:10:07  Began compiling node model.ebola_dbt.cases_summary_by_date
+[0m12:10:07  Writing injected SQL for node "model.ebola_dbt.cases_summary_by_date"
+[0m12:10:07  Began executing node model.ebola_dbt.cases_summary_by_date
+[0m12:10:07  Writing runtime sql for node "model.ebola_dbt.cases_summary_by_date"
+[0m12:10:07  On model.ebola_dbt.cases_summary_by_date: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "ebola_dbt", "target_name": "dev", "node_id": "model.ebola_dbt.cases_summary_by_date"} */
+
+
+  create or replace view `terraform-demo-448410`.`ebola_dataset_2014`.`cases_summary_by_date`
+  OPTIONS(
+      description="""Summarized total cases per date"""
+    )
+  as SELECT
+  date,
+  SUM(confirmed_cases) AS total_confirmed,
+  SUM(probable_cases) AS total_probable,
+  SUM(suspected_cases) AS total_suspected
+FROM `terraform-demo-448410`.`ebola_dataset_2014`.`cases_by_country`
+GROUP BY date
+ORDER BY date;
+
+
+[0m12:10:07  Opening a new connection, currently in state closed
+[0m12:10:10  BigQuery adapter: https://console.cloud.google.com/bigquery?project=terraform-demo-448410&j=bq:US:15d6418e-ab80-4aab-a8d9-06f921c3a0c4&page=queryresults
+[0m12:10:12  Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'd57d09c2-0fbe-41b1-8b2c-b0c3fc200779', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb32445e6b0>]}
+[0m12:10:12  11 of 11 OK created sql view model ebola_dataset_2014.cases_summary_by_date .... [[32mCREATE VIEW (0 processed)[0m in 4.34s]
+[0m12:10:12  Finished running node model.ebola_dbt.cases_summary_by_date
+[0m12:10:12  Opening a new connection, currently in state closed
+[0m12:10:12  Connection 'master' was properly closed.
+[0m12:10:12  Connection 'model.ebola_dbt.weekly_trends_by_country' was properly closed.
+[0m12:10:12  Connection 'model.ebola_dbt.cases_summary_by_date' was properly closed.
+[0m12:10:12  Connection 'model.ebola_dbt.cases_by_country' was properly closed.
+[0m12:10:12  Connection 'model.ebola_dbt.recent_cases_summary' was properly closed.
+[0m12:10:12  
+[0m12:10:12  Finished running 1 table model, 10 view models in 0 hours 0 minutes and 19.44 seconds (19.44s).
+[0m12:10:12  Command end result
+[0m12:10:12  Wrote artifact WritableManifest to /app/dbt/ebola_dbt/target/manifest.json
+[0m12:10:12  Wrote artifact SemanticManifest to /app/dbt/ebola_dbt/target/semantic_manifest.json
+[0m12:10:12  Wrote artifact RunExecutionResult to /app/dbt/ebola_dbt/target/run_results.json
+[0m12:10:12  
+[0m12:10:12  [32mCompleted successfully[0m
+[0m12:10:12  
+[0m12:10:12  Done. PASS=11 WARN=0 ERROR=0 SKIP=0 TOTAL=11
+[0m12:10:12  Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 23.006805, "process_in_blocks": "2584", "process_kernel_time": 0.60086, "process_mem_max_rss": "228972", "process_out_blocks": "0", "process_user_time": 7.180281}
+[0m12:10:12  Command `dbt run` succeeded at 12:10:12.446453 after 23.01 seconds
+[0m12:10:12  Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb35256d7b0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb352437280>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb32d4a0c10>]}
+[0m12:10:12  Flushing usage events
+[0m12:10:14  An error was encountered while trying to flush usage events

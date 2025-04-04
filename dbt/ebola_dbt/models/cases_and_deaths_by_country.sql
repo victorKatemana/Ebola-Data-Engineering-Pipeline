@@ -2,21 +2,20 @@ WITH cases AS (
     SELECT
         country,
         date,
-        SUM(CAST(REGEXP_REPLACE(value, r'\.0$', '') AS INT64)) 
-            AS total_case_value,
+        SUM(CAST(REGEXP_REPLACE(CAST(value AS STRING), r'\.0$', '') AS INT64)) AS total_case_value,
         SUM(CASE 
                 WHEN indicator = 'Cumulative number of confirmed Ebola cases' 
-                THEN CAST(REGEXP_REPLACE(value, r'\.0$', '') AS INT64)
+                THEN CAST(REGEXP_REPLACE(CAST(value AS STRING), r'\.0$', '') AS INT64)
                 ELSE 0
             END) AS confirmed_cases,
         SUM(CASE 
                 WHEN indicator = 'Cumulative number of probable Ebola cases' 
-                THEN CAST(REGEXP_REPLACE(value, r'\.0$', '') AS INT64)
+                THEN CAST(REGEXP_REPLACE(CAST(value AS STRING), r'\.0$', '') AS INT64)
                 ELSE 0
             END) AS probable_cases,
         SUM(CASE 
                 WHEN indicator = 'Cumulative number of suspected Ebola cases' 
-                THEN CAST(REGEXP_REPLACE(value, r'\.0$', '') AS INT64)
+                THEN CAST(REGEXP_REPLACE(CAST(value AS STRING), r'\.0$', '') AS INT64)
                 ELSE 0
             END) AS suspected_cases
     FROM {{ source('ebola', 'ebola_cases') }}
@@ -34,17 +33,17 @@ deaths AS (
         date,
         SUM(CASE 
                 WHEN indicator = 'Cumulative number of confirmed Ebola deaths' 
-                THEN CAST(REGEXP_REPLACE(value, r'\.0$', '') AS INT64)
+                THEN CAST(REGEXP_REPLACE(CAST(value AS STRING), r'\.0$', '') AS INT64)
                 ELSE 0
             END) AS confirmed_deaths,
         SUM(CASE 
                 WHEN indicator = 'Cumulative number of probable Ebola deaths' 
-                THEN CAST(REGEXP_REPLACE(value, r'\.0$', '') AS INT64)
+                THEN CAST(REGEXP_REPLACE(CAST(value AS STRING), r'\.0$', '') AS INT64)
                 ELSE 0
             END) AS probable_deaths,
         SUM(CASE 
                 WHEN indicator = 'Cumulative number of suspected Ebola deaths' 
-                THEN CAST(REGEXP_REPLACE(value, r'\.0$', '') AS INT64)
+                THEN CAST(REGEXP_REPLACE(CAST(value AS STRING), r'\.0$', '') AS INT64)
                 ELSE 0
             END) AS suspected_deaths
     FROM {{ source('ebola', 'ebola_cases') }}

@@ -22,8 +22,10 @@ services:
       retries: 10
 
   kestra:
-    image: kestra/kestra:latest
-    pull_policy: always
+    image: kestra-with-dbt  # ⬅️ use your custom image
+    build:
+      context: .
+      dockerfile: Dockerfile.kestra
     # Note that this setup with a root user is intended for development purpose.
     # Our base image runs without root, but the Docker Compose implementation needs root to access the Docker socket
     # To run Kestra in a rootless mode in production, see: https://kestra.io/docs/installation/podman-compose
@@ -33,6 +35,8 @@ services:
       - kestra-data:/app/storage
       - /var/run/docker.sock:/var/run/docker.sock
       - /tmp/kestra-wd:/tmp/kestra-wd
+      - ../dbt:/app/dbt  # Mount your local dbt project into container
+      - /c/secrets:/secrets  #This maps C:/secrets to /secrets in the container
     environment:
       KESTRA_CONFIGURATION: |
         datasources:
@@ -59,6 +63,8 @@ services:
             tmpDir:
               path: /tmp/kestra-wd/tmp
           url: http://localhost:8080/
+      KESTRA_PLUGINS: |
+        - io.kestra.plugin:plugin-docker
     ports:
       - "8080:8080"
       - "8081:8081"

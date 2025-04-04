@@ -1,0 +1,113 @@
+id: ebola-pipeline
+namespace: ebola
+
+description: |
+  Download Ebola dataset from GitHub, upload it to GCS, and load into BigQuery
+
+variables:
+  file: ebola_data_db_format.csv
+  gcs_path: "raw/{{vars.file}}"
+  bq_dataset: "{{ render(kv('BQ_DATASET')) }}"
+  bq_table: "{{ render(kv('BQ_TABLE')) }}"
+  gcs_uri: "{{ render('gs://' ~ kv('BUCKET_NAME') ~ '/raw/' ~ vars.file) }}"
+    
+
+pluginDefaults:
+  - type: io.kestra.plugin.gcp
+    values:
+      serviceAccount: "{{ kv('GCP_CREDS') }}"
+      projectId: "{{ kv('GCP_PROJECT_ID') }}"
+
+tasks:
+  - id: download_dataset
+    type: io.kestra.plugin.scripts.shell.Commands
+    outputFiles:
+      - "{{vars.file}}"
+    commands:
+      - wget -q -O "{{vars.file}}" https://raw.githubusercontent.com/victorKatemana/Ebola-Data-Engineering-Pipeline/be084dd16e664ef472a2a205559834edd0efe581/dataset/{{vars.file}}
+    taskRunner:
+      type: io.kestra.plugin.core.runner.Process
+
+  - id: upload_to_gcs
+    type: io.kestra.plugin.gcp.gcs.Upload
+    from: "{{ outputs.download_dataset.outputFiles[vars.file] }}"
+    to: "gs://{{kv('BUCKET_NAME')}}/raw/{{vars.file}}"
+    
+  - id: log_gcs_uri
+    type: io.kestra.plugin.core.log.Log
+    message: "📦 GCS URI: {{kv('BQ_DATASET')}}.{{kv('BQ_TABLE')}}_ext"
+
+  - id: create_external_table
+    type: io.kestra.plugin.gcp.bigquery.Query
+    sql: |
+      CREATE OR REPLACE EXTERNAL TABLE {{kv('BQ_DATASET')}}.{{kv('BQ_TABLE')}}_ext
+      OPTIONS (
+        format = 'CSV',
+        uris = ['gs://{{kv("BUCKET_NAME")}}/raw/{{vars.file}}'],
+        skip_leading_rows = 1
+      );
+
+  - id: debug_row_count
+    type: io.kestra.plugin.gcp.bigquery.Query
+    fetchOne: true
+    sql: |
+     SELECT COUNT(*) AS total_rows FROM {{kv('BQ_DATASET')}}.{{kv('BQ_TABLE')}}_ext;
+
+  - id: log_row_count
+    type: io.kestra.plugin.core.log.Log
+    message: "📊 Row count in external table: {{outputs.debug_row_count.row.total_rows}}"
+
+
+  - id: drop_existing_table
+    type: io.kestra.plugin.gcp.bigquery.Query
+    sql: |
+      DROP TABLE IF EXISTS {{kv('BQ_DATASET')}}.{{kv('BQ_TABLE')}};
+
+  - id: materialize_table_with_partitioning
+    type: io.kestra.plugin.gcp.bigquery.Query
+    sql: |
+      CREATE TABLE {{kv('BQ_DATASET')}}.{{kv('BQ_TABLE')}}
+      PARTITION BY Date
+      CLUSTER BY Country AS
+      SELECT
+        Indicator,
+        Country,
+        Date,
+        value
+      FROM {{kv('BQ_DATASET')}}.{{kv('BQ_TABLE')}}_ext;
+
+
+  - id: success_message
+    type: io.kestra.plugin.core.log.Log
+    message: "✅ Ebola pipeline completed: Data loaded into BigQuery external table at {{kv('BQ_DATASET')}}.{{kv('BQ_TABLE')}}"
+        
+  - id: run_dbt_flow
+    type: io.kestra.plugin.scripts.shell.Commands
+    taskRunner:
+      type: io.kestra.plugin.core.runner.Process
+    inputFiles:
+      sa.json: "{{ kv('GCP_CREDS') }}"
+      profiles.yml: |
+        ebola_dbt:
+          outputs:
+            dev:
+              type: bigquery
+              dataset: "{{ kv('BQ_DATASET') }}"
+              project: "{{ kv('GCP_PROJECT_ID') }}"
+              keyfile: sa.json
+              method: service-account
+              priority: interactive
+              threads: 4
+              timeout_seconds: 300
+              fixed_retries: 1
+          target: dev
+    commands:
+      - echo "🏁 Running dbt models from mounted environment"
+      - cp sa.json /app/dbt/ebola_dbt/
+      - cp profiles.yml /app/dbt/ebola_dbt/
+      - cd /app/dbt/ebola_dbt
+      - dbt deps
+      - dbt debug --profiles-dir .
+      - dbt run --profiles-dir . --full-refresh --debug | tee run.log
+    outputFiles:
+      - /app/dbt/ebola_dbt/run.log

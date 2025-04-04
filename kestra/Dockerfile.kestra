@@ -1,0 +1,24 @@
+FROM kestra/kestra:latest
+
+USER root
+
+# Install system dependencies
+RUN apt-get update && \
+    apt-get install -y \
+        python3 \
+        python3-pip \
+        python3-venv \
+        build-essential \
+        git \
+        curl && \
+    apt-get clean
+
+# Upgrade pip and install dbt BigQuery and its dependencies
+RUN pip3 install --upgrade pip && \
+    pip3 install dbt-bigquery
+
+# Confirm versions
+RUN dbt --version
+
+# Optional: set working directory to /app (where your dbt project is mounted)
+WORKDIR /app
