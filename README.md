@@ -109,6 +109,22 @@ Click `Execute` in the top right corner of the flow. The following will happen:
 
 Logs and artifacts are shown live in the Kestra UI.
 
+
+## 📊 6. Visualize in Looker Studio
+
+1. Open [Looker Studio](https://lookerstudio.google.com/)
+2. Click **"Create" → "Data Source"**
+3. Choose **BigQuery** as the connector
+4. Authenticate with your Google account
+5. Navigate to your project → dataset → table (e.g., `cases_and_deaths_by_country`)
+6. Click **Connect**
+7. Optionally, customize and build a dashboard with dimensions like:
+   - Country
+   - Date
+   - Confirmed / Probable / Suspected Cases
+   - Death counts
+8. Link to the current built visuals: https://lookerstudio.google.com/reporting/06628264-c2e5-4292-a637-988be724a5dd/page/q49EF
+
 ---
 
 ## 🐳 Alternative: Run with Docker Only
