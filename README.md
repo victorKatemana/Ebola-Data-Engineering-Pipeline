@@ -4,20 +4,60 @@ This project demonstrates an end-to-end data engineering pipeline using public E
 
 ## 🚀 Project Structure Overview
 
-- **Terraform:** Provisions GCP infrastructure (GCS bucket, BigQuery dataset/table).
-- **Kestra:** Orchestrates the full pipeline from downloading raw data to dbt model execution.
-- **Docker:** Alternative manual execution of components (Spark processing, upload to GCS, dbt transformation).
-- **dbt:** Transforms and models data within BigQuery.
-- **Public Data:** Raw Ebola dataset hosted on GitHub.
+This project automates the processing, transformation, and visualization of Ebola outbreak data using modern data engineering tools.
+
+### 🧱 Components
+
+- **Terraform**  
+  Provisions all necessary GCP resources:
+  - GCS bucket for raw data
+  - BigQuery dataset and table for structured storage
+  - IAM roles and permissions
+
+- **Kestra**  
+  Acts as the orchestrator to automate the workflow from data ingestion to transformation. It runs:
+  - A shell command to download the dataset
+  - Uploads data to GCS
+  - Loads into an external BigQuery table
+  - Creates partitioned & clustered materialized table
+  - Executes dbt models
+
+- **Docker**  
+  Provides containerized alternatives for running:
+  - Spark data processing
+  - Manual dbt transformation
+  - GCS uploads
+
+- **Spark**  
+  Cleans and restructures the raw Ebola dataset into a format suitable for analytics.
+
+- **dbt (Data Build Tool)**  
+  Applies transformations, defines models, and documents the analytical layer on top of BigQuery.
+
+- **BigQuery**  
+  Serves as the central data warehouse:
+  - Stores raw and processed data
+  - Supports querying and analytics via SQL
+
+- **Looker Studio**  
+  Visualizes the final modeled data using:
+  - Dashboards
+  - Charts and filters for exploring trends by country, indicator, and time
+
+- **Public Data Source**  
+  Raw Ebola dataset is pulled from a GitHub repository:
+  [Ebola Dataset on GitHub](https://github.com/victorKatemana/Ebola-Data-Engineering-Pipeline)
+
+
 
 ---
 
 ## 🔧 Requirements
-
 - Docker & Docker Compose
-- Python 3.x
-- Terraform installed
-- GCP Project with service account JSON credentials
+- Terraform CLI
+- Google Cloud Account & Service Account with permissions
+- Python 3.10+ (for Spark/Docker)
+- A `.env` file in your root directory:
 
 ---
 
@@ -124,7 +164,7 @@ Logs and artifacts are shown live in the Kestra UI.
    - Confirmed / Probable / Suspected Cases
    - Death counts
 8. Link to the current built visuals: https://lookerstudio.google.com/reporting/06628264-c2e5-4292-a637-988be724a5dd/page/q49EF
-
+9. You can also download the visuals from LookerStudioVisuals folder
 ---
 
 ## 🐳 Alternative: Run with Docker Only
@@ -177,9 +217,7 @@ docker run --env-file .env spark-ebola
 
 ```bash
 cd dbt/ebola_dbt
-source ../.env
-export GOOGLE_APPLICATION_CREDENTIALS="path/to/sa.json"
-dbt deps
+ensure your sa.json is in the ebola_dbt folder
 dbt run
 ```
 
@@ -191,6 +229,8 @@ dbt run
 - Kestra visualizes model lineage and duration in Gantt view.
 
 ---
+Link to the current built visuals: https://lookerstudio.google.com/reporting/06628264-c2e5-4292-a637-988be724a5dd/page/q49EF
+You can also download the visuals from LookerStudioVisuals folder
 
 ## 📫 Contact
 Victor Katemana — [GitHub](https://github.com/victorKatemana) | [LinkedIn](https://www.linkedin.com/in/victorkatemana)
