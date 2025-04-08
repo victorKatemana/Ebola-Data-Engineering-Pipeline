@@ -1,5 +1,5 @@
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import col
+from pyspark.sql.functions import col, to_date
 from google.cloud import bigquery
 import os
 import logging
@@ -32,7 +32,16 @@ gcs_file_path = f"gs://{BUCKET_NAME}/ebola_data_db_format.csv"
 logger.info(f"Reading data from: {gcs_file_path}")
 
 df = spark.read.option("header", "true").csv(gcs_file_path)
-df = df.toDF(*[col.replace(" ", "_").lower() for col in df.columns])
+# Rename columns to lowercase + underscores
+df = df.toDF(*[col_name.replace(" ", "_").lower() for col_name in df.columns])
+
+# 💡 Check if 'date' column is present and lowercase
+print("COLUMNS:", df.columns)
+
+# 🧠 Now cast 'date' to DATE format
+df = df.withColumn("date", to_date(col("date"), "yyyy-MM-dd"))
+
+
 df.printSchema()
 
 logger.info("Writing data to BigQuery...")

@@ -131,21 +131,53 @@ Logs and artifacts are shown live in the Kestra UI.
 
 You can run each component manually without Kestra:
 
-### 1. Process with Spark
-```bash
-docker build -f Dockerfile.spark -t spark-ebola .
-docker run spark-ebola
+## ⚙️ Environment Configuration
+
+Before running the pipeline, create a `.env` file in the root of your project with the following content:
+
+```env
+# Google Cloud project details
+PROJECT_ID=PROJECTID
+BUCKET_NAME=ebola_data_bucket_2014
+DATASET_NAME=ebola_dataset_2014
+BQ_TABLE=ebola_cases
+
+# Path to the local file (to be copied into container)
+LOCAL_FILE_PATH=/dataset/ebola_data_db_format.csv
+
+# Path where the secret key will be inside the container
+GOOGLE_APPLICATION_CREDENTIALS=/app/ebola-data-pipeline-secret.json
+
+# Destination blob name in GCS
+DESTINATION_BLOB_NAME=ebola_data_db_format
 ```
 
-### 2. Upload to GCS
+> 📝 **Note**: Replace paths and credentials with your actual values.
+
+---
+
+You can run each component manually without Kestra:
+
+### 1. Upload to GCS
 ```bash
 docker build -f Dockerfile.upload_gcs -t upload-ebola .
-docker run -e GCP_CREDS="$(cat path/to/sa.json)" upload-ebola
+docker run --env-file .env  upload-ebola
+```
+
+
+### 2.  Process with Spark
+
+
+```bash
+docker build -f Dockerfile.spark -t spark-ebola .
+docker run --env-file .env spark-ebola
 ```
 
 ### 3. Run dbt
+
 ```bash
 cd dbt/ebola_dbt
+source ../.env
 export GOOGLE_APPLICATION_CREDENTIALS="path/to/sa.json"
 dbt deps
 dbt run
