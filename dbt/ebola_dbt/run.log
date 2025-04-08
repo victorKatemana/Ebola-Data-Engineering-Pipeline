@@ -1,57 +1,57 @@
-[0m12:09:49  Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb35256d7b0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb352420880>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb3516d01f0>]}
-[0m12:09:49  Running with dbt=1.9.4
-[0m12:09:49  running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'debug': 'True', 'profiles_dir': '.', 'log_path': '/app/dbt/ebola_dbt/logs', 'fail_fast': 'False', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'invocation_command': 'dbt run --profiles-dir . --full-refresh --debug', 'introspect': 'True', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
-[0m12:09:50  Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'd57d09c2-0fbe-41b1-8b2c-b0c3fc200779', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb32d9d2830>]}
-[0m12:09:51  Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'd57d09c2-0fbe-41b1-8b2c-b0c3fc200779', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb32db495a0>]}
-[0m12:09:51  Registered adapter: bigquery=1.9.1
-[0m12:09:51  checksum: b5597158181700c50f5bc1c71fe28b37a6fb85633dc5323885263678b6bc782c, vars: {}, profile: , target: , version: 1.9.4
-[0m12:09:52  Partial parsing enabled: 0 files deleted, 0 files added, 1 files changed.
-[0m12:09:52  Partial parsing: updated file: ebola_dbt://models/cases_and_deaths_by_country.sql
-[0m12:09:52  Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'd57d09c2-0fbe-41b1-8b2c-b0c3fc200779', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb32c4ae5f0>]}
-[0m12:09:52  Wrote artifact WritableManifest to /app/dbt/ebola_dbt/target/manifest.json
-[0m12:09:52  Wrote artifact SemanticManifest to /app/dbt/ebola_dbt/target/semantic_manifest.json
-[0m12:09:52  Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'd57d09c2-0fbe-41b1-8b2c-b0c3fc200779', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb32c4943d0>]}
-[0m12:09:52  Found 13 models, 6 data tests, 1 source, 491 macros
-[0m12:09:52  Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'd57d09c2-0fbe-41b1-8b2c-b0c3fc200779', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb32da46b60>]}
-[0m12:09:52  
-[0m12:09:52  Concurrency: 4 threads (target='dev')
-[0m12:09:52  
-[0m12:09:52  Acquiring new bigquery connection 'master'
-[0m12:09:52  Acquiring new bigquery connection 'list_terraform-demo-448410'
-[0m12:09:52  Opening a new connection, currently in state init
-[0m12:09:54  Re-using an available connection from the pool (formerly list_terraform-demo-448410, now list_terraform-demo-448410_ebola_dataset_2014)
-[0m12:09:54  Opening a new connection, currently in state closed
-[0m12:09:56  Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'd57d09c2-0fbe-41b1-8b2c-b0c3fc200779', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb32d9d2380>]}
-[0m12:09:56  Opening a new connection, currently in state init
-[0m12:09:56  Began running node model.ebola_dbt.case_fatality_rates
-[0m12:09:56  Began running node model.ebola_dbt.cases_and_deaths_by_country
-[0m12:09:56  Began running node model.ebola_dbt.cases_by_country
-[0m12:09:56  Began running node model.ebola_dbt.cases_by_status
-[0m12:09:56  1 of 11 START sql view model ebola_dataset_2014.case_fatality_rates ............ [RUN]
-[0m12:09:56  2 of 11 START sql view model ebola_dataset_2014.cases_and_deaths_by_country .... [RUN]
-[0m12:09:56  3 of 11 START sql table model ebola_dataset_2014.cases_by_country .............. [RUN]
-[0m12:09:56  4 of 11 START sql view model ebola_dataset_2014.cases_by_status ................ [RUN]
-[0m12:09:56  Re-using an available connection from the pool (formerly list_terraform-demo-448410_ebola_dataset_2014, now model.ebola_dbt.case_fatality_rates)
-[0m12:09:56  Acquiring new bigquery connection 'model.ebola_dbt.cases_and_deaths_by_country'
-[0m12:09:56  Acquiring new bigquery connection 'model.ebola_dbt.cases_by_country'
-[0m12:09:56  Acquiring new bigquery connection 'model.ebola_dbt.cases_by_status'
-[0m12:09:56  Began compiling node model.ebola_dbt.case_fatality_rates
-[0m12:09:56  Began compiling node model.ebola_dbt.cases_and_deaths_by_country
-[0m12:09:56  Began compiling node model.ebola_dbt.cases_by_country
-[0m12:09:56  Began compiling node model.ebola_dbt.cases_by_status
-[0m12:09:56  Writing injected SQL for node "model.ebola_dbt.case_fatality_rates"
-[0m12:09:56  Writing injected SQL for node "model.ebola_dbt.cases_and_deaths_by_country"
-[0m12:09:56  Writing injected SQL for node "model.ebola_dbt.cases_by_country"
-[0m12:09:56  Writing injected SQL for node "model.ebola_dbt.cases_by_status"
-[0m12:09:56  Began executing node model.ebola_dbt.case_fatality_rates
-[0m12:09:56  Began executing node model.ebola_dbt.cases_by_country
-[0m12:09:56  Began executing node model.ebola_dbt.cases_and_deaths_by_country
-[0m12:09:56  Began executing node model.ebola_dbt.cases_by_status
-[0m12:09:56  Writing runtime sql for node "model.ebola_dbt.case_fatality_rates"
-[0m12:09:56  Opening a new connection, currently in state init
-[0m12:09:56  Writing runtime sql for node "model.ebola_dbt.cases_and_deaths_by_country"
-[0m12:09:56  Writing runtime sql for node "model.ebola_dbt.cases_by_status"
-[0m12:09:56  On model.ebola_dbt.case_fatality_rates: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "ebola_dbt", "target_name": "dev", "node_id": "model.ebola_dbt.case_fatality_rates"} */
+[0m12:15:13  Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f112aa196c0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f1129d653c0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f1129d656c0>]}
+[0m12:15:13  Running with dbt=1.9.4
+[0m12:15:13  running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'version_check': 'True', 'fail_fast': 'False', 'log_path': '/app/dbt/ebola_dbt/logs', 'profiles_dir': '.', 'debug': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'static_parser': 'True', 'introspect': 'True', 'invocation_command': 'dbt run --profiles-dir . --full-refresh --debug', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'True'}
+[0m12:15:15  Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '65761e50-e594-4426-bc51-adc41eed987c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f1105eed600>]}
+[0m12:15:15  Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '65761e50-e594-4426-bc51-adc41eed987c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f112aaccca0>]}
+[0m12:15:15  Registered adapter: bigquery=1.9.1
+[0m12:15:15  checksum: b5597158181700c50f5bc1c71fe28b37a6fb85633dc5323885263678b6bc782c, vars: {}, profile: , target: , version: 1.9.4
+[0m12:15:15  Unable to do partial parsing because of a version mismatch
+[0m12:15:15  Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': '65761e50-e594-4426-bc51-adc41eed987c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f112a20ff70>]}
+[0m12:15:18  Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '65761e50-e594-4426-bc51-adc41eed987c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f1104748f40>]}
+[0m12:15:18  Wrote artifact WritableManifest to /app/dbt/ebola_dbt/target/manifest.json
+[0m12:15:18  Wrote artifact SemanticManifest to /app/dbt/ebola_dbt/target/semantic_manifest.json
+[0m12:15:18  Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '65761e50-e594-4426-bc51-adc41eed987c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f110470fa60>]}
+[0m12:15:18  Found 13 models, 6 data tests, 1 source, 491 macros
+[0m12:15:18  Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '65761e50-e594-4426-bc51-adc41eed987c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f1104738b80>]}
+[0m12:15:18  
+[0m12:15:18  Concurrency: 4 threads (target='dev')
+[0m12:15:18  
+[0m12:15:18  Acquiring new bigquery connection 'master'
+[0m12:15:18  Acquiring new bigquery connection 'list_terraform-demo-448410'
+[0m12:15:18  Opening a new connection, currently in state init
+[0m12:15:21  Re-using an available connection from the pool (formerly list_terraform-demo-448410, now list_terraform-demo-448410_ebola_dataset_2014)
+[0m12:15:21  Opening a new connection, currently in state closed
+[0m12:15:23  Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '65761e50-e594-4426-bc51-adc41eed987c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f1104719120>]}
+[0m12:15:23  Opening a new connection, currently in state init
+[0m12:15:23  Began running node model.ebola_dbt.case_fatality_rates
+[0m12:15:23  Began running node model.ebola_dbt.cases_and_deaths_by_country
+[0m12:15:23  Began running node model.ebola_dbt.cases_by_country
+[0m12:15:23  Began running node model.ebola_dbt.cases_by_status
+[0m12:15:23  1 of 11 START sql view model ebola_dataset_2014.case_fatality_rates ............ [RUN]
+[0m12:15:23  2 of 11 START sql view model ebola_dataset_2014.cases_and_deaths_by_country .... [RUN]
+[0m12:15:23  3 of 11 START sql table model ebola_dataset_2014.cases_by_country .............. [RUN]
+[0m12:15:23  4 of 11 START sql view model ebola_dataset_2014.cases_by_status ................ [RUN]
+[0m12:15:23  Re-using an available connection from the pool (formerly list_terraform-demo-448410_ebola_dataset_2014, now model.ebola_dbt.case_fatality_rates)
+[0m12:15:23  Acquiring new bigquery connection 'model.ebola_dbt.cases_and_deaths_by_country'
+[0m12:15:23  Acquiring new bigquery connection 'model.ebola_dbt.cases_by_country'
+[0m12:15:23  Acquiring new bigquery connection 'model.ebola_dbt.cases_by_status'
+[0m12:15:23  Began compiling node model.ebola_dbt.case_fatality_rates
+[0m12:15:23  Began compiling node model.ebola_dbt.cases_and_deaths_by_country
+[0m12:15:23  Began compiling node model.ebola_dbt.cases_by_country
+[0m12:15:23  Began compiling node model.ebola_dbt.cases_by_status
+[0m12:15:23  Writing injected SQL for node "model.ebola_dbt.case_fatality_rates"
+[0m12:15:23  Writing injected SQL for node "model.ebola_dbt.cases_and_deaths_by_country"
+[0m12:15:23  Writing injected SQL for node "model.ebola_dbt.cases_by_country"
+[0m12:15:23  Writing injected SQL for node "model.ebola_dbt.cases_by_status"
+[0m12:15:23  Began executing node model.ebola_dbt.cases_by_country
+[0m12:15:23  Began executing node model.ebola_dbt.cases_by_status
+[0m12:15:23  Began executing node model.ebola_dbt.case_fatality_rates
+[0m12:15:23  Began executing node model.ebola_dbt.cases_and_deaths_by_country
+[0m12:15:23  Opening a new connection, currently in state init
+[0m12:15:23  Writing runtime sql for node "model.ebola_dbt.cases_by_status"
+[0m12:15:23  Writing runtime sql for node "model.ebola_dbt.case_fatality_rates"
+[0m12:15:23  Writing runtime sql for node "model.ebola_dbt.cases_and_deaths_by_country"
+[0m12:15:23  On model.ebola_dbt.case_fatality_rates: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "ebola_dbt", "target_name": "dev", "node_id": "model.ebola_dbt.case_fatality_rates"} */
 
 
   create or replace view `terraform-demo-448410`.`ebola_dataset_2014`.`case_fatality_rates`
@@ -98,7 +98,45 @@ pivoted AS (
 SELECT * FROM pivoted;
 
 
-[0m12:09:56  On model.ebola_dbt.cases_and_deaths_by_country: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "ebola_dbt", "target_name": "dev", "node_id": "model.ebola_dbt.cases_and_deaths_by_country"} */
+[0m12:15:23  On model.ebola_dbt.cases_by_status: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "ebola_dbt", "target_name": "dev", "node_id": "model.ebola_dbt.cases_by_status"} */
+
+
+  create or replace view `terraform-demo-448410`.`ebola_dataset_2014`.`cases_by_status`
+  OPTIONS(
+      description=""""""
+    )
+  as -- models/cases_by_status.sql
+WITH base AS (
+    SELECT
+        country,
+        date,
+        indicator,
+        SAFE_CAST(value AS INT64) AS value
+    FROM `terraform-demo-448410`.`ebola_dataset_2014`.`ebola_cases`
+    WHERE indicator IN (
+        'Cumulative number of confirmed Ebola cases',
+        'Cumulative number of probable Ebola cases',
+        'Cumulative number of suspected Ebola cases'
+    )
+),
+
+pivoted AS (
+    SELECT
+        country,
+        date,
+        SUM(CASE WHEN indicator = 'Cumulative number of confirmed Ebola cases' THEN value ELSE 0 END) AS confirmed,
+        SUM(CASE WHEN indicator = 'Cumulative number of probable Ebola cases' THEN value ELSE 0 END) AS probable,
+        SUM(CASE WHEN indicator = 'Cumulative number of suspected Ebola cases' THEN value ELSE 0 END) AS suspected
+    FROM base
+    GROUP BY country, date
+)
+
+SELECT * FROM pivoted;
+
+
+[0m12:15:23  Opening a new connection, currently in state closed
+[0m12:15:23  Opening a new connection, currently in state init
+[0m12:15:23  On model.ebola_dbt.cases_and_deaths_by_country: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "ebola_dbt", "target_name": "dev", "node_id": "model.ebola_dbt.cases_and_deaths_by_country"} */
 
 
   create or replace view `terraform-demo-448410`.`ebola_dataset_2014`.`cases_and_deaths_by_country`
@@ -176,47 +214,10 @@ LEFT JOIN deaths d
 ON c.country = d.country AND c.date = d.date;
 
 
-[0m12:09:56  Opening a new connection, currently in state closed
-[0m12:09:56  Opening a new connection, currently in state init
-[0m12:09:56  On model.ebola_dbt.cases_by_status: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "ebola_dbt", "target_name": "dev", "node_id": "model.ebola_dbt.cases_by_status"} */
-
-
-  create or replace view `terraform-demo-448410`.`ebola_dataset_2014`.`cases_by_status`
-  OPTIONS(
-      description=""""""
-    )
-  as -- models/cases_by_status.sql
-WITH base AS (
-    SELECT
-        country,
-        date,
-        indicator,
-        SAFE_CAST(value AS INT64) AS value
-    FROM `terraform-demo-448410`.`ebola_dataset_2014`.`ebola_cases`
-    WHERE indicator IN (
-        'Cumulative number of confirmed Ebola cases',
-        'Cumulative number of probable Ebola cases',
-        'Cumulative number of suspected Ebola cases'
-    )
-),
-
-pivoted AS (
-    SELECT
-        country,
-        date,
-        SUM(CASE WHEN indicator = 'Cumulative number of confirmed Ebola cases' THEN value ELSE 0 END) AS confirmed,
-        SUM(CASE WHEN indicator = 'Cumulative number of probable Ebola cases' THEN value ELSE 0 END) AS probable,
-        SUM(CASE WHEN indicator = 'Cumulative number of suspected Ebola cases' THEN value ELSE 0 END) AS suspected
-    FROM base
-    GROUP BY country, date
-)
-
-SELECT * FROM pivoted;
-
-
-[0m12:09:57  Opening a new connection, currently in state init
-[0m12:09:58  Writing runtime sql for node "model.ebola_dbt.cases_by_country"
-[0m12:09:58  On model.ebola_dbt.cases_by_country: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "ebola_dbt", "target_name": "dev", "node_id": "model.ebola_dbt.cases_by_country"} */
+[0m12:15:23  Opening a new connection, currently in state init
+[0m12:15:25  Writing runtime sql for node "model.ebola_dbt.cases_by_country"
+[0m12:15:25  BigQuery adapter: https://console.cloud.google.com/bigquery?project=terraform-demo-448410&j=bq:US:aeb8614a-fc3f-4a12-be3b-f012a27ce385&page=queryresults
+[0m12:15:25  On model.ebola_dbt.cases_by_country: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "ebola_dbt", "target_name": "dev", "node_id": "model.ebola_dbt.cases_by_country"} */
 
   
     
@@ -259,21 +260,20 @@ pivoted AS (
 SELECT * FROM pivoted
     );
   
-[0m12:09:58  BigQuery adapter: https://console.cloud.google.com/bigquery?project=terraform-demo-448410&j=bq:US:fe56cf8d-3ef7-4c8a-92d5-306d60617354&page=queryresults
-[0m12:09:59  BigQuery adapter: https://console.cloud.google.com/bigquery?project=terraform-demo-448410&j=bq:US:74da4cbf-35aa-41ff-9f65-9beaa29ff7ea&page=queryresults
-[0m12:09:59  BigQuery adapter: https://console.cloud.google.com/bigquery?project=terraform-demo-448410&j=bq:US:7d15584f-80d0-4901-a63a-3054ae07efbe&page=queryresults
-[0m12:09:59  BigQuery adapter: https://console.cloud.google.com/bigquery?project=terraform-demo-448410&j=bq:US:2ba7ca32-9f60-491b-b70e-d1d08e9bb2df&page=queryresults
-[0m12:09:59  Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'd57d09c2-0fbe-41b1-8b2c-b0c3fc200779', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb32c4cece0>]}
-[0m12:09:59  2 of 11 OK created sql view model ebola_dataset_2014.cases_and_deaths_by_country  [[32mCREATE VIEW (0 processed)[0m in 3.21s]
-[0m12:09:59  Finished running node model.ebola_dbt.cases_and_deaths_by_country
-[0m12:09:59  Began running node model.ebola_dbt.combined_case_death_summary
-[0m12:09:59  5 of 11 START sql view model ebola_dataset_2014.combined_case_death_summary .... [RUN]
-[0m12:09:59  Re-using an available connection from the pool (formerly model.ebola_dbt.cases_and_deaths_by_country, now model.ebola_dbt.combined_case_death_summary)
-[0m12:09:59  Began compiling node model.ebola_dbt.combined_case_death_summary
-[0m12:09:59  Writing injected SQL for node "model.ebola_dbt.combined_case_death_summary"
-[0m12:09:59  Began executing node model.ebola_dbt.combined_case_death_summary
-[0m12:09:59  Writing runtime sql for node "model.ebola_dbt.combined_case_death_summary"
-[0m12:09:59  On model.ebola_dbt.combined_case_death_summary: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "ebola_dbt", "target_name": "dev", "node_id": "model.ebola_dbt.combined_case_death_summary"} */
+[0m12:15:25  BigQuery adapter: https://console.cloud.google.com/bigquery?project=terraform-demo-448410&j=bq:US:59426542-507f-4cbc-9b01-e0acf7702e9a&page=queryresults
+[0m12:15:25  BigQuery adapter: https://console.cloud.google.com/bigquery?project=terraform-demo-448410&j=bq:US:5e162231-bec8-4723-88af-c531f5fb4880&page=queryresults
+[0m12:15:25  BigQuery adapter: https://console.cloud.google.com/bigquery?project=terraform-demo-448410&j=bq:US:cf70970d-e3bf-4d9a-a1b3-36850725e662&page=queryresults
+[0m12:15:26  Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '65761e50-e594-4426-bc51-adc41eed987c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f1104718100>]}
+[0m12:15:26  4 of 11 OK created sql view model ebola_dataset_2014.cases_by_status ........... [[32mCREATE VIEW (0 processed)[0m in 3.34s]
+[0m12:15:26  Finished running node model.ebola_dbt.cases_by_status
+[0m12:15:26  Began running node model.ebola_dbt.combined_case_death_summary
+[0m12:15:26  5 of 11 START sql view model ebola_dataset_2014.combined_case_death_summary .... [RUN]
+[0m12:15:26  Re-using an available connection from the pool (formerly model.ebola_dbt.cases_by_status, now model.ebola_dbt.combined_case_death_summary)
+[0m12:15:26  Began compiling node model.ebola_dbt.combined_case_death_summary
+[0m12:15:26  Writing injected SQL for node "model.ebola_dbt.combined_case_death_summary"
+[0m12:15:26  Began executing node model.ebola_dbt.combined_case_death_summary
+[0m12:15:26  Writing runtime sql for node "model.ebola_dbt.combined_case_death_summary"
+[0m12:15:26  On model.ebola_dbt.combined_case_death_summary: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "ebola_dbt", "target_name": "dev", "node_id": "model.ebola_dbt.combined_case_death_summary"} */
 
 
   create or replace view `terraform-demo-448410`.`ebola_dataset_2014`.`combined_case_death_summary`
@@ -307,18 +307,18 @@ pivoted AS (
 SELECT * FROM pivoted;
 
 
-[0m12:09:59  Opening a new connection, currently in state closed
-[0m12:09:59  Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'd57d09c2-0fbe-41b1-8b2c-b0c3fc200779', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb32c44b8e0>]}
-[0m12:09:59  4 of 11 OK created sql view model ebola_dataset_2014.cases_by_status ........... [[32mCREATE VIEW (0 processed)[0m in 3.32s]
-[0m12:10:00  Finished running node model.ebola_dbt.cases_by_status
-[0m12:10:00  Began running node model.ebola_dbt.deaths_by_country
-[0m12:10:00  6 of 11 START sql view model ebola_dataset_2014.deaths_by_country .............. [RUN]
-[0m12:10:00  Re-using an available connection from the pool (formerly model.ebola_dbt.cases_by_status, now model.ebola_dbt.deaths_by_country)
-[0m12:10:00  Began compiling node model.ebola_dbt.deaths_by_country
-[0m12:10:00  Writing injected SQL for node "model.ebola_dbt.deaths_by_country"
-[0m12:10:00  Began executing node model.ebola_dbt.deaths_by_country
-[0m12:10:00  Writing runtime sql for node "model.ebola_dbt.deaths_by_country"
-[0m12:10:00  On model.ebola_dbt.deaths_by_country: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "ebola_dbt", "target_name": "dev", "node_id": "model.ebola_dbt.deaths_by_country"} */
+[0m12:15:26  Opening a new connection, currently in state closed
+[0m12:15:27  Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '65761e50-e594-4426-bc51-adc41eed987c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f1105eec8b0>]}
+[0m12:15:27  2 of 11 OK created sql view model ebola_dataset_2014.cases_and_deaths_by_country  [[32mCREATE VIEW (0 processed)[0m in 4.54s]
+[0m12:15:27  Finished running node model.ebola_dbt.cases_and_deaths_by_country
+[0m12:15:27  Began running node model.ebola_dbt.deaths_by_country
+[0m12:15:27  6 of 11 START sql view model ebola_dataset_2014.deaths_by_country .............. [RUN]
+[0m12:15:27  Re-using an available connection from the pool (formerly model.ebola_dbt.cases_and_deaths_by_country, now model.ebola_dbt.deaths_by_country)
+[0m12:15:27  Began compiling node model.ebola_dbt.deaths_by_country
+[0m12:15:27  Writing injected SQL for node "model.ebola_dbt.deaths_by_country"
+[0m12:15:27  Began executing node model.ebola_dbt.deaths_by_country
+[0m12:15:27  Writing runtime sql for node "model.ebola_dbt.deaths_by_country"
+[0m12:15:27  On model.ebola_dbt.deaths_by_country: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "ebola_dbt", "target_name": "dev", "node_id": "model.ebola_dbt.deaths_by_country"} */
 
 
   create or replace view `terraform-demo-448410`.`ebola_dataset_2014`.`deaths_by_country`
@@ -353,18 +353,18 @@ pivoted AS (
 SELECT * FROM pivoted;
 
 
-[0m12:10:00  Opening a new connection, currently in state closed
-[0m12:10:01  Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'd57d09c2-0fbe-41b1-8b2c-b0c3fc200779', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb32c2542e0>]}
-[0m12:10:01  1 of 11 OK created sql view model ebola_dataset_2014.case_fatality_rates ....... [[32mSCRIPT (367.9 KiB processed)[0m in 4.67s]
-[0m12:10:01  Finished running node model.ebola_dbt.case_fatality_rates
-[0m12:10:01  Began running node model.ebola_dbt.forecast_cases_by_country
-[0m12:10:01  7 of 11 START sql view model ebola_dataset_2014.forecast_cases_by_country ...... [RUN]
-[0m12:10:01  Re-using an available connection from the pool (formerly model.ebola_dbt.case_fatality_rates, now model.ebola_dbt.forecast_cases_by_country)
-[0m12:10:01  Began compiling node model.ebola_dbt.forecast_cases_by_country
-[0m12:10:01  Writing injected SQL for node "model.ebola_dbt.forecast_cases_by_country"
-[0m12:10:01  Began executing node model.ebola_dbt.forecast_cases_by_country
-[0m12:10:01  Writing runtime sql for node "model.ebola_dbt.forecast_cases_by_country"
-[0m12:10:01  On model.ebola_dbt.forecast_cases_by_country: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "ebola_dbt", "target_name": "dev", "node_id": "model.ebola_dbt.forecast_cases_by_country"} */
+[0m12:15:27  Opening a new connection, currently in state closed
+[0m12:15:28  Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '65761e50-e594-4426-bc51-adc41eed987c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f11048d02e0>]}
+[0m12:15:28  1 of 11 OK created sql view model ebola_dataset_2014.case_fatality_rates ....... [[32mSCRIPT (367.9 KiB processed)[0m in 4.99s]
+[0m12:15:28  Finished running node model.ebola_dbt.case_fatality_rates
+[0m12:15:28  Began running node model.ebola_dbt.forecast_cases_by_country
+[0m12:15:28  7 of 11 START sql view model ebola_dataset_2014.forecast_cases_by_country ...... [RUN]
+[0m12:15:28  Re-using an available connection from the pool (formerly model.ebola_dbt.case_fatality_rates, now model.ebola_dbt.forecast_cases_by_country)
+[0m12:15:28  Began compiling node model.ebola_dbt.forecast_cases_by_country
+[0m12:15:28  Writing injected SQL for node "model.ebola_dbt.forecast_cases_by_country"
+[0m12:15:28  Began executing node model.ebola_dbt.forecast_cases_by_country
+[0m12:15:28  Writing runtime sql for node "model.ebola_dbt.forecast_cases_by_country"
+[0m12:15:28  On model.ebola_dbt.forecast_cases_by_country: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "ebola_dbt", "target_name": "dev", "node_id": "model.ebola_dbt.forecast_cases_by_country"} */
 
 
   create or replace view `terraform-demo-448410`.`ebola_dataset_2014`.`forecast_cases_by_country`
@@ -425,20 +425,20 @@ forecasted AS (
 SELECT * FROM forecasted;
 
 
-[0m12:10:01  Opening a new connection, currently in state closed
-[0m12:10:02  BigQuery adapter: https://console.cloud.google.com/bigquery?project=terraform-demo-448410&j=bq:US:d290ccc5-f66c-4cee-8be7-ea7496c7cf88&page=queryresults
-[0m12:10:02  BigQuery adapter: https://console.cloud.google.com/bigquery?project=terraform-demo-448410&j=bq:US:8e855274-56af-4f33-8d8f-10387cb23377&page=queryresults
-[0m12:10:02  Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'd57d09c2-0fbe-41b1-8b2c-b0c3fc200779', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb352657b80>]}
-[0m12:10:02  5 of 11 OK created sql view model ebola_dataset_2014.combined_case_death_summary  [[32mCREATE VIEW (0 processed)[0m in 3.03s]
-[0m12:10:02  Finished running node model.ebola_dbt.combined_case_death_summary
-[0m12:10:02  Began running node model.ebola_dbt.indicators_flat_table
-[0m12:10:02  8 of 11 START sql view model ebola_dataset_2014.indicators_flat_table .......... [RUN]
-[0m12:10:02  Re-using an available connection from the pool (formerly model.ebola_dbt.combined_case_death_summary, now model.ebola_dbt.indicators_flat_table)
-[0m12:10:02  Began compiling node model.ebola_dbt.indicators_flat_table
-[0m12:10:02  Writing injected SQL for node "model.ebola_dbt.indicators_flat_table"
-[0m12:10:02  Began executing node model.ebola_dbt.indicators_flat_table
-[0m12:10:02  Writing runtime sql for node "model.ebola_dbt.indicators_flat_table"
-[0m12:10:02  On model.ebola_dbt.indicators_flat_table: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "ebola_dbt", "target_name": "dev", "node_id": "model.ebola_dbt.indicators_flat_table"} */
+[0m12:15:28  Opening a new connection, currently in state closed
+[0m12:15:29  BigQuery adapter: https://console.cloud.google.com/bigquery?project=terraform-demo-448410&j=bq:US:33383da7-b8b1-4902-a3b9-dc5093ba1a8d&page=queryresults
+[0m12:15:30  Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '65761e50-e594-4426-bc51-adc41eed987c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f112acf8730>]}
+[0m12:15:30  5 of 11 OK created sql view model ebola_dataset_2014.combined_case_death_summary  [[32mCREATE VIEW (0 processed)[0m in 4.28s]
+[0m12:15:30  Finished running node model.ebola_dbt.combined_case_death_summary
+[0m12:15:30  Began running node model.ebola_dbt.indicators_flat_table
+[0m12:15:30  8 of 11 START sql view model ebola_dataset_2014.indicators_flat_table .......... [RUN]
+[0m12:15:30  Re-using an available connection from the pool (formerly model.ebola_dbt.combined_case_death_summary, now model.ebola_dbt.indicators_flat_table)
+[0m12:15:30  Began compiling node model.ebola_dbt.indicators_flat_table
+[0m12:15:30  Writing injected SQL for node "model.ebola_dbt.indicators_flat_table"
+[0m12:15:30  Began executing node model.ebola_dbt.indicators_flat_table
+[0m12:15:30  Writing runtime sql for node "model.ebola_dbt.indicators_flat_table"
+[0m12:15:30  BigQuery adapter: https://console.cloud.google.com/bigquery?project=terraform-demo-448410&j=bq:US:a80cb3f8-dff0-4762-9626-d8c9282b5a76&page=queryresults
+[0m12:15:30  On model.ebola_dbt.indicators_flat_table: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "ebola_dbt", "target_name": "dev", "node_id": "model.ebola_dbt.indicators_flat_table"} */
 
 
   create or replace view `terraform-demo-448410`.`ebola_dataset_2014`.`indicators_flat_table`
@@ -455,18 +455,19 @@ FROM `terraform-demo-448410`.`ebola_dataset_2014`.`ebola_cases`
 ORDER BY country, date, indicator;
 
 
-[0m12:10:03  Opening a new connection, currently in state closed
-[0m12:10:03  Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'd57d09c2-0fbe-41b1-8b2c-b0c3fc200779', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb32c256920>]}
-[0m12:10:03  6 of 11 OK created sql view model ebola_dataset_2014.deaths_by_country ......... [[32mCREATE VIEW (0 processed)[0m in 3.18s]
-[0m12:10:03  Finished running node model.ebola_dbt.deaths_by_country
-[0m12:10:03  Began running node model.ebola_dbt.recent_cases_summary
-[0m12:10:03  9 of 11 START sql view model ebola_dataset_2014.recent_cases_summary ........... [RUN]
-[0m12:10:03  Re-using an available connection from the pool (formerly model.ebola_dbt.deaths_by_country, now model.ebola_dbt.recent_cases_summary)
-[0m12:10:03  Began compiling node model.ebola_dbt.recent_cases_summary
-[0m12:10:03  Writing injected SQL for node "model.ebola_dbt.recent_cases_summary"
-[0m12:10:03  Began executing node model.ebola_dbt.recent_cases_summary
-[0m12:10:03  Writing runtime sql for node "model.ebola_dbt.recent_cases_summary"
-[0m12:10:03  On model.ebola_dbt.recent_cases_summary: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "ebola_dbt", "target_name": "dev", "node_id": "model.ebola_dbt.recent_cases_summary"} */
+[0m12:15:30  Opening a new connection, currently in state closed
+[0m12:15:31  BigQuery adapter: https://console.cloud.google.com/bigquery?project=terraform-demo-448410&j=bq:US:378a0d50-87f7-4037-92a5-2b7994a51355&page=queryresults
+[0m12:15:31  Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '65761e50-e594-4426-bc51-adc41eed987c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f1105eec8b0>]}
+[0m12:15:31  6 of 11 OK created sql view model ebola_dataset_2014.deaths_by_country ......... [[32mCREATE VIEW (0 processed)[0m in 4.06s]
+[0m12:15:31  Finished running node model.ebola_dbt.deaths_by_country
+[0m12:15:31  Began running node model.ebola_dbt.recent_cases_summary
+[0m12:15:31  9 of 11 START sql view model ebola_dataset_2014.recent_cases_summary ........... [RUN]
+[0m12:15:31  Re-using an available connection from the pool (formerly model.ebola_dbt.deaths_by_country, now model.ebola_dbt.recent_cases_summary)
+[0m12:15:31  Began compiling node model.ebola_dbt.recent_cases_summary
+[0m12:15:31  Writing injected SQL for node "model.ebola_dbt.recent_cases_summary"
+[0m12:15:31  Began executing node model.ebola_dbt.recent_cases_summary
+[0m12:15:31  Writing runtime sql for node "model.ebola_dbt.recent_cases_summary"
+[0m12:15:31  On model.ebola_dbt.recent_cases_summary: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "ebola_dbt", "target_name": "dev", "node_id": "model.ebola_dbt.recent_cases_summary"} */
 
 
   create or replace view `terraform-demo-448410`.`ebola_dataset_2014`.`recent_cases_summary`
@@ -504,19 +505,18 @@ pivoted AS (
 SELECT * FROM pivoted;
 
 
-[0m12:10:03  Opening a new connection, currently in state closed
-[0m12:10:03  BigQuery adapter: https://console.cloud.google.com/bigquery?project=terraform-demo-448410&j=bq:US:f5f23dc8-935e-436b-8f30-7a510d5d450d&page=queryresults
-[0m12:10:04  Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'd57d09c2-0fbe-41b1-8b2c-b0c3fc200779', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb32da22170>]}
-[0m12:10:04  7 of 11 OK created sql view model ebola_dataset_2014.forecast_cases_by_country . [[32mCREATE VIEW (0 processed)[0m in 2.87s]
-[0m12:10:04  Finished running node model.ebola_dbt.forecast_cases_by_country
-[0m12:10:04  Began running node model.ebola_dbt.weekly_trends_by_country
-[0m12:10:04  10 of 11 START sql view model ebola_dataset_2014.weekly_trends_by_country ...... [RUN]
-[0m12:10:04  Re-using an available connection from the pool (formerly model.ebola_dbt.forecast_cases_by_country, now model.ebola_dbt.weekly_trends_by_country)
-[0m12:10:04  Began compiling node model.ebola_dbt.weekly_trends_by_country
-[0m12:10:04  Writing injected SQL for node "model.ebola_dbt.weekly_trends_by_country"
-[0m12:10:04  Began executing node model.ebola_dbt.weekly_trends_by_country
-[0m12:10:04  Writing runtime sql for node "model.ebola_dbt.weekly_trends_by_country"
-[0m12:10:04  On model.ebola_dbt.weekly_trends_by_country: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "ebola_dbt", "target_name": "dev", "node_id": "model.ebola_dbt.weekly_trends_by_country"} */
+[0m12:15:31  Opening a new connection, currently in state closed
+[0m12:15:32  Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '65761e50-e594-4426-bc51-adc41eed987c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f11048d02e0>]}
+[0m12:15:32  7 of 11 OK created sql view model ebola_dataset_2014.forecast_cases_by_country . [[32mCREATE VIEW (0 processed)[0m in 4.41s]
+[0m12:15:32  Finished running node model.ebola_dbt.forecast_cases_by_country
+[0m12:15:32  Began running node model.ebola_dbt.weekly_trends_by_country
+[0m12:15:32  10 of 11 START sql view model ebola_dataset_2014.weekly_trends_by_country ...... [RUN]
+[0m12:15:32  Re-using an available connection from the pool (formerly model.ebola_dbt.forecast_cases_by_country, now model.ebola_dbt.weekly_trends_by_country)
+[0m12:15:32  Began compiling node model.ebola_dbt.weekly_trends_by_country
+[0m12:15:32  Writing injected SQL for node "model.ebola_dbt.weekly_trends_by_country"
+[0m12:15:32  Began executing node model.ebola_dbt.weekly_trends_by_country
+[0m12:15:32  Writing runtime sql for node "model.ebola_dbt.weekly_trends_by_country"
+[0m12:15:32  On model.ebola_dbt.weekly_trends_by_country: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "ebola_dbt", "target_name": "dev", "node_id": "model.ebola_dbt.weekly_trends_by_country"} */
 
 
   create or replace view `terraform-demo-448410`.`ebola_dataset_2014`.`weekly_trends_by_country`
@@ -557,30 +557,24 @@ pivoted AS (
 SELECT * FROM pivoted;
 
 
-[0m12:10:04  Opening a new connection, currently in state closed
-[0m12:10:04  BigQuery adapter: https://console.cloud.google.com/bigquery?project=terraform-demo-448410&j=bq:US:9576741b-18ab-4379-ad34-9e7d20a4abea&page=queryresults
-[0m12:10:05  BigQuery adapter: https://console.cloud.google.com/bigquery?project=terraform-demo-448410&j=bq:US:52c93146-8086-416b-8946-2300dbefa929&page=queryresults
-[0m12:10:05  Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'd57d09c2-0fbe-41b1-8b2c-b0c3fc200779', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb32da45240>]}
-[0m12:10:05  8 of 11 OK created sql view model ebola_dataset_2014.indicators_flat_table ..... [[32mCREATE VIEW (0 processed)[0m in 2.80s]
-[0m12:10:05  Finished running node model.ebola_dbt.indicators_flat_table
-[0m12:10:06  Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'd57d09c2-0fbe-41b1-8b2c-b0c3fc200779', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb3244e09d0>]}
-[0m12:10:06  9 of 11 OK created sql view model ebola_dataset_2014.recent_cases_summary ...... [[32mCREATE VIEW (0 processed)[0m in 2.79s]
-[0m12:10:06  Finished running node model.ebola_dbt.recent_cases_summary
-[0m12:10:06  BigQuery adapter: https://console.cloud.google.com/bigquery?project=terraform-demo-448410&j=bq:US:d132b455-8e95-40e1-821b-23409c4a915c&page=queryresults
-[0m12:10:07  Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'd57d09c2-0fbe-41b1-8b2c-b0c3fc200779', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb32c51d150>]}
-[0m12:10:07  10 of 11 OK created sql view model ebola_dataset_2014.weekly_trends_by_country . [[32mCREATE VIEW (0 processed)[0m in 2.80s]
-[0m12:10:07  Finished running node model.ebola_dbt.weekly_trends_by_country
-[0m12:10:07  Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'd57d09c2-0fbe-41b1-8b2c-b0c3fc200779', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb32d99b490>]}
-[0m12:10:07  3 of 11 OK created sql table model ebola_dataset_2014.cases_by_country ......... [[32mCREATE TABLE (2.5k rows, 1.3 MiB processed)[0m in 11.22s]
-[0m12:10:07  Finished running node model.ebola_dbt.cases_by_country
-[0m12:10:07  Began running node model.ebola_dbt.cases_summary_by_date
-[0m12:10:07  11 of 11 START sql view model ebola_dataset_2014.cases_summary_by_date ......... [RUN]
-[0m12:10:07  Re-using an available connection from the pool (formerly model.ebola_dbt.indicators_flat_table, now model.ebola_dbt.cases_summary_by_date)
-[0m12:10:07  Began compiling node model.ebola_dbt.cases_summary_by_date
-[0m12:10:07  Writing injected SQL for node "model.ebola_dbt.cases_summary_by_date"
-[0m12:10:07  Began executing node model.ebola_dbt.cases_summary_by_date
-[0m12:10:07  Writing runtime sql for node "model.ebola_dbt.cases_summary_by_date"
-[0m12:10:07  On model.ebola_dbt.cases_summary_by_date: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "ebola_dbt", "target_name": "dev", "node_id": "model.ebola_dbt.cases_summary_by_date"} */
+[0m12:15:32  Opening a new connection, currently in state closed
+[0m12:15:33  BigQuery adapter: https://console.cloud.google.com/bigquery?project=terraform-demo-448410&j=bq:US:f1d9ab62-d39f-4fdf-8981-d80e3be2e836&page=queryresults
+[0m12:15:34  Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '65761e50-e594-4426-bc51-adc41eed987c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f1129ba3a60>]}
+[0m12:15:34  8 of 11 OK created sql view model ebola_dataset_2014.indicators_flat_table ..... [[32mCREATE VIEW (0 processed)[0m in 4.04s]
+[0m12:15:34  Finished running node model.ebola_dbt.indicators_flat_table
+[0m12:15:35  BigQuery adapter: https://console.cloud.google.com/bigquery?project=terraform-demo-448410&j=bq:US:98f32396-03ac-4f8b-a9dd-0d312b91615f&page=queryresults
+[0m12:15:35  BigQuery adapter: https://console.cloud.google.com/bigquery?project=terraform-demo-448410&j=bq:US:ddb63971-3e60-4ae6-a155-996a65a6c565&page=queryresults
+[0m12:15:35  Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '65761e50-e594-4426-bc51-adc41eed987c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f11047191e0>]}
+[0m12:15:35  3 of 11 OK created sql table model ebola_dataset_2014.cases_by_country ......... [[32mCREATE TABLE (2.5k rows, 1.3 MiB processed)[0m in 12.48s]
+[0m12:15:35  Finished running node model.ebola_dbt.cases_by_country
+[0m12:15:35  Began running node model.ebola_dbt.cases_summary_by_date
+[0m12:15:35  11 of 11 START sql view model ebola_dataset_2014.cases_summary_by_date ......... [RUN]
+[0m12:15:35  Re-using an available connection from the pool (formerly model.ebola_dbt.indicators_flat_table, now model.ebola_dbt.cases_summary_by_date)
+[0m12:15:35  Began compiling node model.ebola_dbt.cases_summary_by_date
+[0m12:15:35  Writing injected SQL for node "model.ebola_dbt.cases_summary_by_date"
+[0m12:15:35  Began executing node model.ebola_dbt.cases_summary_by_date
+[0m12:15:35  Writing runtime sql for node "model.ebola_dbt.cases_summary_by_date"
+[0m12:15:35  On model.ebola_dbt.cases_summary_by_date: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "ebola_dbt", "target_name": "dev", "node_id": "model.ebola_dbt.cases_summary_by_date"} */
 
 
   create or replace view `terraform-demo-448410`.`ebola_dataset_2014`.`cases_summary_by_date`
@@ -597,29 +591,35 @@ GROUP BY date
 ORDER BY date;
 
 
-[0m12:10:07  Opening a new connection, currently in state closed
-[0m12:10:10  BigQuery adapter: https://console.cloud.google.com/bigquery?project=terraform-demo-448410&j=bq:US:15d6418e-ab80-4aab-a8d9-06f921c3a0c4&page=queryresults
-[0m12:10:12  Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'd57d09c2-0fbe-41b1-8b2c-b0c3fc200779', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb32445e6b0>]}
-[0m12:10:12  11 of 11 OK created sql view model ebola_dataset_2014.cases_summary_by_date .... [[32mCREATE VIEW (0 processed)[0m in 4.34s]
-[0m12:10:12  Finished running node model.ebola_dbt.cases_summary_by_date
-[0m12:10:12  Opening a new connection, currently in state closed
-[0m12:10:12  Connection 'master' was properly closed.
-[0m12:10:12  Connection 'model.ebola_dbt.weekly_trends_by_country' was properly closed.
-[0m12:10:12  Connection 'model.ebola_dbt.cases_summary_by_date' was properly closed.
-[0m12:10:12  Connection 'model.ebola_dbt.cases_by_country' was properly closed.
-[0m12:10:12  Connection 'model.ebola_dbt.recent_cases_summary' was properly closed.
-[0m12:10:12  
-[0m12:10:12  Finished running 1 table model, 10 view models in 0 hours 0 minutes and 19.44 seconds (19.44s).
-[0m12:10:12  Command end result
-[0m12:10:12  Wrote artifact WritableManifest to /app/dbt/ebola_dbt/target/manifest.json
-[0m12:10:12  Wrote artifact SemanticManifest to /app/dbt/ebola_dbt/target/semantic_manifest.json
-[0m12:10:12  Wrote artifact RunExecutionResult to /app/dbt/ebola_dbt/target/run_results.json
-[0m12:10:12  
-[0m12:10:12  [32mCompleted successfully[0m
-[0m12:10:12  
-[0m12:10:12  Done. PASS=11 WARN=0 ERROR=0 SKIP=0 TOTAL=11
-[0m12:10:12  Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 23.006805, "process_in_blocks": "2584", "process_kernel_time": 0.60086, "process_mem_max_rss": "228972", "process_out_blocks": "0", "process_user_time": 7.180281}
-[0m12:10:12  Command `dbt run` succeeded at 12:10:12.446453 after 23.01 seconds
-[0m12:10:12  Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb35256d7b0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb352437280>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb32d4a0c10>]}
-[0m12:10:12  Flushing usage events
-[0m12:10:14  An error was encountered while trying to flush usage events
+[0m12:15:35  Opening a new connection, currently in state closed
+[0m12:15:35  Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '65761e50-e594-4426-bc51-adc41eed987c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f11045d8790>]}
+[0m12:15:35  9 of 11 OK created sql view model ebola_dataset_2014.recent_cases_summary ...... [[32mCREATE VIEW (0 processed)[0m in 4.11s]
+[0m12:15:35  Finished running node model.ebola_dbt.recent_cases_summary
+[0m12:15:36  Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '65761e50-e594-4426-bc51-adc41eed987c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f11041d6f50>]}
+[0m12:15:36  10 of 11 OK created sql view model ebola_dataset_2014.weekly_trends_by_country . [[32mCREATE VIEW (0 processed)[0m in 3.48s]
+[0m12:15:36  Finished running node model.ebola_dbt.weekly_trends_by_country
+[0m12:15:37  BigQuery adapter: https://console.cloud.google.com/bigquery?project=terraform-demo-448410&j=bq:US:0f27ea5c-54d1-43c7-bfb9-fb18287d2140&page=queryresults
+[0m12:15:39  Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '65761e50-e594-4426-bc51-adc41eed987c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f11047278b0>]}
+[0m12:15:39  11 of 11 OK created sql view model ebola_dataset_2014.cases_summary_by_date .... [[32mCREATE VIEW (0 processed)[0m in 3.94s]
+[0m12:15:39  Finished running node model.ebola_dbt.cases_summary_by_date
+[0m12:15:39  Opening a new connection, currently in state closed
+[0m12:15:39  Connection 'master' was properly closed.
+[0m12:15:39  Connection 'model.ebola_dbt.weekly_trends_by_country' was properly closed.
+[0m12:15:39  Connection 'model.ebola_dbt.recent_cases_summary' was properly closed.
+[0m12:15:39  Connection 'model.ebola_dbt.cases_by_country' was properly closed.
+[0m12:15:39  Connection 'model.ebola_dbt.cases_summary_by_date' was properly closed.
+[0m12:15:39  
+[0m12:15:39  Finished running 1 table model, 10 view models in 0 hours 0 minutes and 20.85 seconds (20.85s).
+[0m12:15:39  Command end result
+[0m12:15:39  Wrote artifact WritableManifest to /app/dbt/ebola_dbt/target/manifest.json
+[0m12:15:39  Wrote artifact SemanticManifest to /app/dbt/ebola_dbt/target/semantic_manifest.json
+[0m12:15:39  Wrote artifact RunExecutionResult to /app/dbt/ebola_dbt/target/run_results.json
+[0m12:15:39  
+[0m12:15:39  [32mCompleted successfully[0m
+[0m12:15:39  
+[0m12:15:39  Done. PASS=11 WARN=0 ERROR=0 SKIP=0 TOTAL=11
+[0m12:15:39  Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 25.56643, "process_in_blocks": "2584", "process_kernel_time": 0.598441, "process_mem_max_rss": "229684", "process_out_blocks": "0", "process_user_time": 8.4504}
+[0m12:15:39  Command `dbt run` succeeded at 12:15:39.831083 after 25.57 seconds
+[0m12:15:39  Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f112aa196c0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f1104878a90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f110470fa60>]}
+[0m12:15:39  Flushing usage events
+[0m12:15:41  An error was encountered while trying to flush usage events

@@ -4,6 +4,11 @@ namespace: ebola
 description: |
   Download Ebola dataset from GitHub, upload it to GCS, and load into BigQuery
 
+triggers:
+  - id: daily-midnight-trigger
+    type: io.kestra.plugin.core.trigger.Schedule
+    cron: "0 0 * * *"
+
 variables:
   file: ebola_data_db_format.csv
   gcs_path: "raw/{{vars.file}}"
